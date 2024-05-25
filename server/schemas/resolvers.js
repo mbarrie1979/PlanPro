@@ -1,7 +1,9 @@
-const { User } = require('../models');
+const { User, Session, Conference } = require('../models');
 const { signToken } = require('../utils/auth');
+const { DateTimeResolver} = require('graphql-scalars');
 
 const resolvers = {
+    DateTime: DateTimeResolver,
     Query: {
         me: async (parent, args, context) => {
             console.log('Context:', context); // Log the context
@@ -12,6 +14,14 @@ const resolvers = {
         },
         user: async (_, { _id }) => {
             return await User.findById(_id);
+        },
+        conference: async (parent, args, context) => {
+             
+         return Conference.find();
+        },
+        session: async (parent, args, context) => {
+             
+            return Session.find();
         },
     },
     Mutation: {
