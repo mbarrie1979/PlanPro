@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 
 // import schema from Book.js
 const bookSchema = require('./Book');
+const Session = require('./Session');
 
 const userSchema = new Schema(
   {
@@ -21,8 +22,13 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    savedSessions: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Session',
+    }],
     // set savedBooks to be an array of data that adheres to the bookSchema
     savedBooks: [bookSchema],
+    
   },
   // set this to use virtual below
   {
@@ -53,5 +59,14 @@ userSchema.virtual('bookCount').get(function () {
 });
 
 const User = model('User', userSchema);
+
+User.create({
+  username: "testuser",
+  email: "testuser@gmail.com",
+  password: "123456",
+  savedSessions: [],
+  savedBooks: []
+}).then((data)=>console.log(data))
+.catch((err) => console.log(err));
 
 module.exports = User;
