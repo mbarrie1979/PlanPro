@@ -49,7 +49,9 @@ sessionSchema.virtual('userCount').get(function () {
 const Session = model('Session', sessionSchema);
 
 //Test Code
-Session.create({
+
+const query = { name: "CSS3" };
+const update = { $set: { 
     name: "CSS3",
     description: "An introduction to CSS",
     presenters: ["Gabe Perry", "John Hy"],
@@ -57,7 +59,22 @@ Session.create({
     duration: 1,
     room: "101B",
     users: [],
-}).then(data => console.log(data))
-.catch(err => console.log(err));
+ }};
+const options = { upsert: true };
+Session.updateOne(query, update, options)
+.then((data)=>console.log(data))
+.catch((err) => console.log(err));
+
+
+// Session.create({
+//     name: "CSS3",
+//     description: "An introduction to CSS",
+//     presenters: ["Gabe Perry", "John Hy"],
+//     date: new Date('2024-06-10T06:00:00'),
+//     duration: 1,
+//     room: "101B",
+//     users: [],
+// }).then(data => console.log(data))
+// .catch(err => console.log(err));
 
 module.exports = Session;
