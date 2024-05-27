@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 // import { useMutation } from '@apollo/client';
 import { GET_CONFERENCE } from '../utils/queries';
+import { formatDate } from '../utils/formatdate';
 // import Auth from '../utils/auth';
 import {
     Container,
@@ -58,6 +59,7 @@ const Home = () => {
                                 <Card border='dark'>
                                     <Card.Body>
                                         <Card.Title>{conference.name}</Card.Title>
+                                        <p>From {formatDate(conference.startDate)} to {formatDate(conference.endDate)}</p>
                                         <p className='small'>Location: {conference.location}</p>
                                         <Card.Text>{conference.description}</Card.Text>
                                     </Card.Body>
