@@ -17,6 +17,7 @@ const typeDefs = `
     location: String!
   }
   type Session {
+    _id: ID!
     name: String
     description: String!
     presenters: [String]!
@@ -42,8 +43,10 @@ const typeDefs = `
     me: User
     user(_id: ID!): User
     bookByTitle(title: String!): Book
-    conference: [Conference]
-    session: [Session]
+    conferences: [Conference]
+    conference(id: ID!): Conference
+    sessions: [Session]  
+    sessionsByConference(conferenceId: ID!): [Session]
   }
 type Mutation {
     login(email: String!, password: String!): Auth
