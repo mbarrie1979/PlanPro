@@ -9,6 +9,7 @@ const typeDefs = `
     title: String!
   }
   type Conference {
+    _id: ID!
     name: String
     description: String!
     startDate: DateTime
