@@ -9,29 +9,34 @@ const sessionSchema = new Schema(
       unique: false,
     },
     description: {
-        type: String,
-        required: true,
-        unique: true,
-      },
+      type: String,
+      required: true,
+      unique: true,
+    },
     presenters: [String],
     date: {
       type: Date,
       required: true,
     },
     duration: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true
     },
     // set savedBooks to be an array of data that adheres to the bookSchema
     room: {
-        type: String,
-        required: true,
-        unique: false,
-      },
+      type: String,
+      required: true,
+      unique: false,
+    },
     users: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-      }],
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }],
+    conferenceId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Conference',
+      required: true,
+    },
   },
   // set this to use virtual below
   {
@@ -50,20 +55,22 @@ const Session = model('Session', sessionSchema);
 
 //Test Code
 
-const query = { name: "CSS3" };
-const update = { $set: { 
-    name: "CSS3",
-    description: "An introduction to CSS",
-    presenters: ["Gabe Perry", "John Hy"],
-    date: new Date('2024-06-10T06:00:00'),
-    duration: 1,
-    room: "101B",
-    users: [],
- }};
-const options = { upsert: true };
-Session.updateOne(query, update, options)
-.then((data)=>console.log(data))
-.catch((err) => console.log(err));
+// const query = { name: "CSS3" };
+// const update = {
+//   $set: {
+//     name: "CSS3",
+//     description: "An introduction to CSS",
+//     presenters: ["Gabe Perry", "John Hy"],
+//     date: new Date('2024-06-10T06:00:00'),
+//     duration: 1,
+//     room: "101B",
+//     users: [],
+//   }
+// };
+// const options = { upsert: true };
+// Session.updateOne(query, update, options)
+//   .then((data) => console.log(data))
+//   .catch((err) => console.log(err));
 
 
 // Session.create({

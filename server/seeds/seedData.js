@@ -32,7 +32,8 @@ module.exports = {
       // time: '09:00 AM',
       duration: 90,
       room: '101',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Advanced JavaScript Patterns',
@@ -42,7 +43,8 @@ module.exports = {
       // time: '11:00 AM',
       duration: 60,
       room: '102',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Building Responsive Websites',
@@ -52,7 +54,8 @@ module.exports = {
       // time: '10:00 AM',
       duration: 60,
       room: '201',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Web Security Essentials',
@@ -62,7 +65,8 @@ module.exports = {
       // time: '02:00 PM',
       duration: 90,
       room: '202',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Progressive Web Apps',
@@ -72,7 +76,8 @@ module.exports = {
       // time: '09:00 AM',
       duration: 90,
       room: '301',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Deploying Web Applications',
@@ -82,7 +87,8 @@ module.exports = {
       // time: '11:00 AM',
       duration: 60,
       room: '302',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     // JavaScript Con 2024 sessions
     {
@@ -93,7 +99,8 @@ module.exports = {
       // time: '09:00 AM',
       duration: 60,
       room: '401',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Node.js Performance Tuning',
@@ -103,7 +110,8 @@ module.exports = {
       // time: '11:00 AM',
       duration: 90,
       room: '402',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'React State Management',
@@ -113,7 +121,8 @@ module.exports = {
       // time: '10:00 AM',
       duration: 60,
       room: '501',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Testing JavaScript Applications',
@@ -123,7 +132,8 @@ module.exports = {
       // time: '02:00 PM',
       duration: 90,
       room: '502',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Building RESTful APIs with Express',
@@ -133,7 +143,8 @@ module.exports = {
       // time: '09:00 AM',
       duration: 60,
       room: '601',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Serverless Functions with AWS Lambda',
@@ -143,7 +154,8 @@ module.exports = {
       // time: '11:00 AM',
       duration: 60,
       room: '602',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     // Frontend Masters 2024 sessions
     {
@@ -154,7 +166,8 @@ module.exports = {
       // time: '09:00 AM',
       duration: 90,
       room: '701',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'CSS Grid Layouts',
@@ -164,7 +177,8 @@ module.exports = {
       // time: '11:00 AM',
       duration: 60,
       room: '702',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Accessibility in Web Design',
@@ -174,7 +188,8 @@ module.exports = {
       // time: '10:00 AM',
       duration: 60,
       room: '801',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'JavaScript Frameworks Comparison',
@@ -184,7 +199,8 @@ module.exports = {
       // time: '02:00 PM',
       duration: 90,
       room: '802',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Animations with CSS and JavaScript',
@@ -194,7 +210,8 @@ module.exports = {
       // time: '09:00 AM',
       duration: 90,
       room: '901',
-      users: []
+      users: [],
+      conferenceId: null,
     },
     {
       name: 'Web Development with Vue.js',
@@ -204,30 +221,32 @@ module.exports = {
       // time: '11:00 AM',
       duration: 60,
       room: '902',
-      users: []
+      users: [],
+      conferenceId: null,
     },
   ],
   users: [
-    { username: 'Alice Johnson', email: 'alice@example.com', phone: '555-555-5555', password: 'securepassword123', savedSessions: [] },
-    { username: 'Bob Smith', email: 'bob@example.com', phone: '555-555-5556', password: 'securepassword123', savedSessions: [] },
-    { username: 'Carol Williams', email: 'carol@example.com', phone: '555-555-5557', password: 'securepassword123', savedSessions: [] },
-    { username: 'David Brown', email: 'david@example.com', phone: '555-555-5558', password: 'securepassword123', savedSessions: [] },
-    { username: 'Eve Davis', email: 'eve@example.com', phone: '555-555-5559', password: 'securepassword123', savedSessions: [] },
-    { username: 'Frank Miller', email: 'frank@example.com', phone: '555-555-5560', password: 'securepassword123', savedSessions: [] },
-    { username: 'Grace Wilson', email: 'grace@example.com', phone: '555-555-5561', password: 'securepassword123', savedSessions: [] },
-    { username: 'Hank Moore', email: 'hank@example.com', phone: '555-555-5562', password: 'securepassword123', savedSessions: [] },
-    { username: 'Ivy Taylor', email: 'ivy@example.com', phone: '555-555-5563', password: 'securepassword123', savedSessions: [] },
-    { username: 'Jack Anderson', email: 'jack@example.com', phone: '555-555-5564', password: 'securepassword123', savedSessions: [] },
-    { username: 'Kimberly Thomas', email: 'kimberly@example.com', phone: '555-555-5565', password: 'securepassword123', savedSessions: [] },
-    { username: 'Liam Harris', email: 'liam@example.com', phone: '555-555-5566', password: 'securepassword123', savedSessions: [] },
-    { username: 'Mia Clark', email: 'mia@example.com', phone: '555-555-5567', password: 'securepassword123', savedSessions: [] },
-    { username: 'Noah Lewis', email: 'noah@example.com', phone: '555-555-5568', password: 'securepassword123', savedSessions: [] },
-    { username: 'Olivia Lee', email: 'olivia@example.com', phone: '555-555-5569', password: 'securepassword123', savedSessions: [] },
-    { username: 'Peter Walker', email: 'peter@example.com', phone: '555-555-5570', password: 'securepassword123', savedSessions: [] },
-    { username: 'Quinn Hall', email: 'quinn@example.com', phone: '555-555-5571', password: 'securepassword123', savedSessions: [] },
-    { username: 'Rachel Allen', email: 'rachel@example.com', phone: '555-555-5572', password: 'securepassword123', savedSessions: [] },
-    { username: 'Steve Young', email: 'steve@example.com', phone: '555-555-5573', password: 'securepassword123', savedSessions: [] },
-    { username: 'Tina King', email: 'tina@example.com', phone: '555-555-5574', password: 'securepassword123', savedSessions: [] },
-  ],
+    { username: 'alice_j', email: 'alice@example.com', phone: '555-555-5555', password: 'securepassword123', savedSessions: [] },
+    { username: 'bob_s', email: 'bob@example.com', phone: '555-555-5556', password: 'securepassword123', savedSessions: [] },
+    { username: 'carol_w', email: 'carol@example.com', phone: '555-555-5557', password: 'securepassword123', savedSessions: [] },
+    { username: 'david_b', email: 'david@example.com', phone: '555-555-5558', password: 'securepassword123', savedSessions: [] },
+    { username: 'eve_d', email: 'eve@example.com', phone: '555-555-5559', password: 'securepassword123', savedSessions: [] },
+    { username: 'frank_m', email: 'frank@example.com', phone: '555-555-5560', password: 'securepassword123', savedSessions: [] },
+    { username: 'grace_w', email: 'grace@example.com', phone: '555-555-5561', password: 'securepassword123', savedSessions: [] },
+    { username: 'hank_m', email: 'hank@example.com', phone: '555-555-5562', password: 'securepassword123', savedSessions: [] },
+    { username: 'ivy_t', email: 'ivy@example.com', phone: '555-555-5563', password: 'securepassword123', savedSessions: [] },
+    { username: 'jack_a', email: 'jack@example.com', phone: '555-555-5564', password: 'securepassword123', savedSessions: [] },
+    { username: 'kimberly_t', email: 'kimberly@example.com', phone: '555-555-5565', password: 'securepassword123', savedSessions: [] },
+    { username: 'liam_h', email: 'liam@example.com', phone: '555-555-5566', password: 'securepassword123', savedSessions: [] },
+    { username: 'mia_c', email: 'mia@example.com', phone: '555-555-5567', password: 'securepassword123', savedSessions: [] },
+    { username: 'noah_l', email: 'noah@example.com', phone: '555-555-5568', password: 'securepassword123', savedSessions: [] },
+    { username: 'olivia_l', email: 'olivia@example.com', phone: '555-555-5569', password: 'securepassword123', savedSessions: [] },
+    { username: 'peter_w', email: 'peter@example.com', phone: '555-555-5570', password: 'securepassword123', savedSessions: [] },
+    { username: 'quinn_h', email: 'quinn@example.com', phone: '555-555-5571', password: 'securepassword123', savedSessions: [] },
+    { username: 'rachel_a', email: 'rachel@example.com', phone: '555-555-5572', password: 'securepassword123', savedSessions: [] },
+    { username: 'steve_y', email: 'steve@example.com', phone: '555-555-5573', password: 'securepassword123', savedSessions: [] },
+    { username: 'tina_k', email: 'tina@example.com', phone: '555-555-5574', password: 'securepassword123', savedSessions: [] },
+],
+
 };
 

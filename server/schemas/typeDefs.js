@@ -24,6 +24,7 @@ const typeDefs = `
     duration: Int
     room: String!
     users: [User]
+    conferenceId: ID!
   }
   type User {
     _id: ID!
