@@ -64,4 +64,16 @@ export const REMOVE_BOOK = gql`
   }
 `;
 
+export const SAVE_SESSION = gql`
+  mutation saveSession($userId: ID!, $sessionId: ID!) {
+    saveSession(userId: $userId, sessionId: $sessionId) {
+      _id
+      savedSessions {
+        _id
+        name
+      }
+    }
+  }
+`;
+
 

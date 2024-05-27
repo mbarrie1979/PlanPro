@@ -58,6 +58,21 @@ const resolvers = {
             await user.save();
             return user;
         },
+        saveSession: async (_, { userId, sessionId }, context) => {
+            const user = await User.findById(userId);
+            if (!user) {
+              throw new Error('User not found');
+            }
+            const session = await Session.findById(sessionId);
+            if (!session) {
+              throw new Error('Session not found');
+            }
+            user.savedSessions.push(sessionId);
+            await user.save();
+            return user;
+          },
+        
+      
         removeBook: async (_, { userId, bookId }) => {
             const user = await User.findById(userId);
             if (!user) {
