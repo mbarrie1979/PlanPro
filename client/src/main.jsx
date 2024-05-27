@@ -6,6 +6,7 @@ import App from './App.jsx'
 import SearchBooks from './pages/SearchBooks'
 import SavedBooks from './pages/SavedBooks'
 import Home from './pages/Home.jsx'
+import Conference from './pages/Conference.jsx'
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,10 @@ const router = createBrowserRouter([
       }, {
         path: '/saved',
         element: <SavedBooks />
-      }
+      }, {
+        path: '/conference/:id',
+        element: <Conference />, // Add the dynamic Conference route
+      },
     ]
   }
 ])
