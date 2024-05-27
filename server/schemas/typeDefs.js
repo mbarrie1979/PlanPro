@@ -52,6 +52,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     saveBook(userId: ID!, book: BookInput!): User
+    saveSession(userId: ID!, sessionId: ID!): User
     removeBook(userId: ID!, bookId: String!): User
   }
   input BookInput {
@@ -61,6 +62,16 @@ type Mutation {
     image: String
     link: String
     title: String!
+  }
+  input SessionInput {
+    _id: ID!
+    name: String
+    description: String!
+    presenters: [String]!
+    date: DateTime
+    duration: Int
+    room: String!
+    conferenceId: ID!
   }
 `;
 

@@ -27,12 +27,19 @@ async function seedDatabase() {
       return session;
     });
 
-    // Insert sessions
-    await Session.insertMany(sessionsWithConferenceId);
+
+
+    // Insert sessions and save the inserted sessions
+    const insertedSessions = await Session.insertMany(sessionsWithConferenceId);
 
     // Insert users and reference session IDs
     const userPromises = seedData.users.map(user => {
-      user.savedSessions = sessionsWithConferenceId.map(session => session._id);
+      // Check if there are sessions in the array
+      if (insertedSessions.length > 0) {
+        // Pick 3 random sessions for the user
+        const randomSessions = insertedSessions.sort(() => 0.5 - Math.random()).slice(0, 3);
+        user.savedSessions = randomSessions.map(session => session._id);
+      }
       return new User(user).save();
     });
     await Promise.all(userPromises);
