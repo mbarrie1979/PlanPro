@@ -60,18 +60,18 @@ userSchema.virtual('bookCount').get(function () {
 
 const User = model('User', userSchema);
 
-const query = { username: "testuser" };
-const update = { $set: { 
-  username: "testuser",
-  email: "testuser@gmail.com",
-  password: "123456",
-  savedSessions: [],
-  savedBooks: []
- }};
-const options = { upsert: true };
-User.updateOne(query, update, options)
-.then((data)=>console.log(data))
-.catch((err) => console.log(err));
+// const query = { username: "testuser" };
+// const update = { $set: { 
+//   username: "testuser",
+//   email: "testuser@gmail.com",
+//   password: "123456",
+//   savedSessions: [],
+//   savedBooks: []
+//  }};
+// const options = { upsert: true };
+// User.updateOne(query, update, options)
+// .then((data)=>console.log(data))
+// .catch((err) => console.log(err));
 
 // User.create({
 //   username: "testuser",
