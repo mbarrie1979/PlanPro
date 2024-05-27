@@ -18,3 +18,15 @@ export const GET_ME = gql`
     }
   }
 `;
+
+export const GET_CONFERENCE = gql`
+query conference {
+  conference {
+    _id
+    name
+    description 
+    startDate
+    endDate
+    location
+  }
+}`
