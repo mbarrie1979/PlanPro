@@ -27,7 +27,7 @@ const authMiddleware = async ({ req }) => {
 
   try {
     const { data } = jwt.verify(token, secret, { maxAge: expiration });
-    const user = await User.findById(data._id);
+    const user = await User.findById(data._id).populate('savedSessions');
     return { user };
   } catch (err) {
     console.log('Invalid token', err);
@@ -36,8 +36,8 @@ const authMiddleware = async ({ req }) => {
 };
 
 // Function to sign a new token
-const signToken = function ({ username, email, _id }) {
-  const payload = { username, email, _id };
+const signToken = function ({ username, email, _id, savedSessions }) {
+  const payload = { username, email, _id, savedSessions };
   return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
 };
 
