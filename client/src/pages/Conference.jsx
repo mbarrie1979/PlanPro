@@ -2,10 +2,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_CONFERENCE, GET_SESSIONS_BY_CONFERENCE } from '../utils/queries';
+import { GET_CONFERENCE, GET_SESSIONS_BY_CONFERENCE, GET_ME } from '../utils/queries';
 import { SAVE_SESSION } from '../utils/mutations';
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { formatDate } from '../utils/formatdate';
+import { saveSessionIds, getSavedSessionIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
 
 const Conference = () => {
@@ -16,20 +17,38 @@ const Conference = () => {
     const { loading: loadingSessions, data: sessionData } = useQuery(GET_SESSIONS_BY_CONFERENCE, {
         variables: { conferenceId: id },
     });
-
+// Fetch user data including saved sessions
+const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
     const [savedSessionIds, setSavedSessionIds] = useState([]);
 
+
     useEffect(() => {
-        if (Auth.loggedIn()) {
-            const savedSessions = Auth.getProfile().data.savedSessions || [];
-            setSavedSessionIds(savedSessions.map(session => session._id));
+        // Wait until user data is loaded
+        if (loadingUserData) return;
+
+        if (userData && Auth.loggedIn()) {
+            const savedSessionsFromProfile = userData.me.savedSessions.map(session => session._id) || [];
+            const savedSessionsFromLocalStorage = getSavedSessionIds();
+
+            // Merge and remove duplicates
+            const combinedSessions = [...new Set([...savedSessionsFromLocalStorage, ...savedSessionsFromProfile])];
+            setSavedSessionIds(combinedSessions);
+            saveSessionIds(combinedSessions); // Update local storage with combined data
+        } else {
+            const savedSessionsFromLocalStorage = getSavedSessionIds();
+            setSavedSessionIds(savedSessionsFromLocalStorage);
         }
-    }, []);
+    }, [loadingUserData, userData]);
+
+    useEffect(() => {
+        saveSessionIds(savedSessionIds);
+        console.log(savedSessionIds)
+    }, [savedSessionIds]);
 
     const [saveSession] = useMutation(SAVE_SESSION);
 
     const handleSaveSession = async (sessionId) => {
-        console.log('Session ID:', sessionId)
+        // console.log('Session ID:', sessionId)
         try {
             const userId = Auth.getProfile().data._id;
             console.log('User ID:', userId);
@@ -38,12 +57,18 @@ const Conference = () => {
             });
 
             if (data) {
-                setSavedSessionIds([...savedSessionIds, sessionId]);
+                setSavedSessionIds(prevIds => {
+                    const newIds = [...prevIds, sessionId];
+                    saveSessionIds(newIds);
+                    return newIds;
+                });
             }
         } catch (e) {
             console.error(e);
         }
     };
+
+
 
     if (loadingConference || loadingSessions) {
         return <h2>LOADING...</h2>;
@@ -55,7 +80,7 @@ const Conference = () => {
 
     const conference = conferenceData.conference;
     const sessions = sessionData.sessionsByConference;
-    console.log(sessionData)
+    // console.log(sessionData)
 
     return (
         <>
@@ -82,7 +107,7 @@ const Conference = () => {
                                     <p>Room: {session.room}</p>
                                     {Auth.loggedIn() && (
                                         <Button
-                                            disabled={savedSessionIds?.some((savedSessionId) => savedSessionId === session._id)}
+                                            disabled={savedSessionIds?.some((savedSessionId) => savedSessionId === session)}
                                             className='btn-block btn-info'
                                             onClick={() => handleSaveSession(session._id)}>
                                             {savedSessionIds?.some((savedSessionId) => savedSessionId === session._id)

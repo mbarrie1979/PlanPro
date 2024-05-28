@@ -5,7 +5,9 @@ import decode from 'jwt-decode';
 class AuthService {
   // get user data
   getProfile() {
-    return decode(this.getToken());
+    const decoded = decode(this.getToken());
+    console.log(decoded)
+    return decoded
   }
 
   // check if user's logged in
@@ -41,6 +43,7 @@ class AuthService {
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('saved_sessions');
     // this will reload the page and reset the state of the application
     window.location.assign('/');
   }

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App.jsx'
 import SearchBooks from './pages/SearchBooks'
 import SavedBooks from './pages/SavedBooks'
+import SavedSessions from './pages/SavedSessions'
 import Home from './pages/Home.jsx'
 import Conference from './pages/Conference.jsx'
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       }, {
         path: '/saved',
         element: <SavedBooks />
+      }, {
+      }, {
+        path: '/mysessions',
+        element: <SavedSessions />
       }, {
         path: '/conference/:id',
         element: <Conference />, // Add the dynamic Conference route
