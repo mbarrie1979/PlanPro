@@ -6,6 +6,7 @@ module.exports = {
       startDate: new Date('2024-10-01'),
       endDate: new Date('2024-10-03'),
       location: '456 Web St, Dev City, DC 67890',
+      image: '/Users/nardge/Downloads/lv-convention.jpeg',
     },
     {
       name: 'JavaScript Con 2024',
@@ -13,6 +14,7 @@ module.exports = {
       startDate: new Date('2024-11-15'),
       endDate: new Date('2024-11-17'),
       location: '789 Script Ave, Code Town, CT 12345',
+      image: '/Users/nardge/Downloads/lv-convention.jpeg',
     },
     {
       name: 'Frontend Masters 2024',
@@ -20,6 +22,7 @@ module.exports = {
       startDate: new Date('2024-12-05'),
       endDate: new Date('2024-12-07'),
       location: '101 Frontend Blvd, Design City, DC 67890',
+      image: '/Users/nardge/Downloads/lv-convention.jpeg',
     },
   ],
   sessions: [
