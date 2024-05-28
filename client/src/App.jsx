@@ -25,7 +25,7 @@ const cache = new InMemoryCache({
   typePolicies: {
     User: {
       fields: {
-        savedBooks: {
+        savedSessions: {
           merge(existing = [], incoming) {
             return [...incoming]; // Return the incoming array to overwrite existing
           },
