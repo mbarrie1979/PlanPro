@@ -80,7 +80,7 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
 
     const conference = conferenceData.conference;
     const sessions = sessionData.sessionsByConference;
-    // console.log(sessionData)
+    console.log(conferenceData)
 
     return (
         <>
@@ -107,7 +107,7 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
                                     <p>Room: {session.room}</p>
                                     {Auth.loggedIn() && (
                                         <Button
-                                            disabled={savedSessionIds?.some((savedSessionId) => savedSessionId === session)}
+                                            disabled={savedSessionIds?.some((savedSessionId) => savedSessionId === session._id)}
                                             className='btn-block btn-info'
                                             onClick={() => handleSaveSession(session._id)}>
                                             {savedSessionIds?.some((savedSessionId) => savedSessionId === session._id)
