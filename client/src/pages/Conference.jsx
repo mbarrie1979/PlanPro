@@ -8,6 +8,7 @@ import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { formatDate } from '../utils/formatdate';
 import { saveSessionIds, getSavedSessionIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
+import '../App.css';
 
 const Conference = () => {
     const { id } = useParams();
@@ -17,8 +18,8 @@ const Conference = () => {
     const { loading: loadingSessions, data: sessionData } = useQuery(GET_SESSIONS_BY_CONFERENCE, {
         variables: { conferenceId: id },
     });
-// Fetch user data including saved sessions
-const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
+    // Fetch user data including saved sessions
+    const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
     const [savedSessionIds, setSavedSessionIds] = useState([]);
 
 
@@ -84,8 +85,11 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
 
     return (
         <>
-            <div className="text-light bg-dark p-5">
-                <Container>
+            <div className="text-light bg-dark d-flex justify-content-center">
+                <Container className="conference-container" style={{
+                    backgroundImage: `url(${conference.image})`
+                }}
+                >
                     <h1>{conference.name}</h1>
                     <p>{conference.description}</p>
                     <p>From {formatDate(conference.startDate)} to {formatDate(conference.endDate)}</p>
