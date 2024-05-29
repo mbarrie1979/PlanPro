@@ -14,7 +14,7 @@ const AppNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/home' className='brand'>
+          <Navbar.Brand as={Link} to='/' className='brand'>
             PlanPro
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
