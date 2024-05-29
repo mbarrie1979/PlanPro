@@ -1,5 +1,26 @@
+
+
 body {
   font-family: 'Rubik', sans-serif;
+  /*Create variable for floral-white */
+  background-color: #FFFAF1;
+  background-size: cover;
+}
+
+nav {
+  background: url("/assets/images/color-swirl-bg.jpeg") no-repeat center center fixed;
+}
+
+.brand {
+  font-family: "Abril Fatface", serif;
+  font-size: 2rem;
+}
+
+.banner {
+  /* background: url("/assets/images/blur-peeps-bg.jpeg") no-repeat center center fixed; */
+  background-size: cover;
+ 
+
 }
 
 h1,
