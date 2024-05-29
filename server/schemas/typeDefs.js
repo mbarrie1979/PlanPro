@@ -1,4 +1,5 @@
 const typeDefs = `
+  scalar Date
   scalar DateTime
   type Book {
     authors: [String]
@@ -10,10 +11,10 @@ const typeDefs = `
   }
   type Conference {
     _id: ID!
-    name: String
+    name: String!
     description: String!
-    startDate: DateTime
-    endDate: DateTime
+    startDate: Date!
+    endDate: Date!
     location: String!
     image: String!
   }
@@ -22,7 +23,7 @@ const typeDefs = `
     name: String
     description: String!
     presenters: [String]!
-    date: DateTime
+    date: Date
     duration: Int
     room: String!
     users: [User]
@@ -52,6 +53,7 @@ const typeDefs = `
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addConference(name: String!, description: String!, startDate: Date!, endDate: Date!, location: String!, image: String!): Conference
     saveBook(userId: ID!, book: BookInput!): User
     saveSession(userId: ID!, sessionId: ID!): User
     removeSession(userId: ID!, sessionId: ID!): User
@@ -70,7 +72,7 @@ type Mutation {
     name: String
     description: String!
     presenters: [String]!
-    date: DateTime
+    date: Date
     duration: Int
     room: String!
     conferenceId: ID!
