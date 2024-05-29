@@ -12,7 +12,7 @@ const ConferenceForm = () => {
     startDate: '',
     endDate: '',
     location: '',
-    image: '/asset/images/b-convention.jpeg'
+    image: '/assets/images/b-convention.jpeg'
   });
   // set state for form validation
   const [validated, setValidated] = useState(false);
@@ -58,7 +58,7 @@ const ConferenceForm = () => {
       startDate: '',
       endDate: '',
       location: '',
-      image: '/asset/images/b-convention.jpeg'
+      image: '/assets/images/b-convention.jpeg'
     });
 };
 
