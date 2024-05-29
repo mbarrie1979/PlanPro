@@ -42,7 +42,7 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
 
     useEffect(() => {
         saveSessionIds(savedSessionIds);
-        console.log(savedSessionIds)
+        // console.log(savedSessionIds)
     }, [savedSessionIds]);
 
     const [saveSession] = useMutation(SAVE_SESSION);
@@ -51,7 +51,7 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
         // console.log('Session ID:', sessionId)
         try {
             const userId = Auth.getProfile().data._id;
-            console.log('User ID:', userId);
+            // console.log('User ID:', userId);
             const { data } = await saveSession({
                 variables: { userId, sessionId },
             });
@@ -80,7 +80,7 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
 
     const conference = conferenceData.conference;
     const sessions = sessionData.sessionsByConference;
-    console.log(conferenceData)
+    // console.log(conferenceData)
 
     return (
         <>
