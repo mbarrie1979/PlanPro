@@ -9,23 +9,28 @@ const conferenceSchema = new Schema(
       unique: false,
     },
     description: {
-        type: String,
-        required: true,
-        unique: true,
-      },
+      type: String,
+      required: true,
+      unique: true,
+    },
     startDate: {
       type: Date,
       required: true,
     },
     endDate: {
-        type: Date,
-        required: true,
-      },
+      type: Date,
+      required: true,
+    },
     location: {
-        type: String,
-        required: true,
-        unique: false,
-      },
+      type: String,
+      required: true,
+      unique: false,
+    },
+    image: {
+      type: String,
+      required: true,
+      unique: false,
+    },
   },
   // set this to use virtual below
   {

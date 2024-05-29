@@ -15,6 +15,7 @@ const typeDefs = `
     startDate: DateTime
     endDate: DateTime
     location: String!
+    image: String!
   }
   type Session {
     _id: ID!
