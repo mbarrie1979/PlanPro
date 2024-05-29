@@ -18,11 +18,11 @@ const Home = () => {
     // use this to determine if `useEffect()` hook needs to run again
     const conferencesDataLength = Object.keys(conferencesData).length;
 
-    console.log("Conference Data:" + conferencesData);
-    console.log("Error:" + getConferencesError);
+    // console.log("Conference Data:", conferencesData);
+    // console.log("Error:" + getConferencesError);
     useEffect(() => {
         if (data && data.conferences) {
-            console.log(data);
+            // console.log(data);
             setConferencesData(data.conferences); // Assuming `data.conference` is the array of conferences
         }
     }, [data]);
