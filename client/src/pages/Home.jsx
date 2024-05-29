@@ -18,6 +18,8 @@ const Home = () => {
     // use this to determine if `useEffect()` hook needs to run again
     const conferencesDataLength = Object.keys(conferencesData).length;
 
+    console.log("Conference Data:" + conferencesData);
+    console.log("Error:" + getConferencesError);
     useEffect(() => {
         if (data && data.conferences) {
             console.log(data);
@@ -41,31 +43,37 @@ const Home = () => {
     }
     return (
         <>
-            <div className="text-light bg-dark p-5">
+            <div className="text-light text-center bg-dark p-5">
                 <Container>
-                    <h1>Viewing Upcoming Conferences!</h1>
+                    <h1>View Upcoming Conferences</h1>
                 </Container>
             </div >
             <Container>
-                <h2 className='pt-5'>
+                <h2 className='pt-4'>
                     {conferencesData.length
                         ? `Viewing ${conferencesData.length} upcoming ${conferencesData.length === 1 ? 'conference' : 'conferences'}:`
                         : 'There are no conferences!'}
                 </h2>
+                
+                <hr></hr>
+                <br></br>
                 <Row>
                     {conferencesData.map((conference) => {
                         return (
                             <Col key={conference._id} md="4">
                                 <Link to={`/conference/${conference._id}`} style={{ textDecoration: 'none' }}>
-                                    <Card border='dark'>
-                                        <Card.Body>
-                                            <Card.Title>{conference.name}</Card.Title>
-                                            <p>From {formatDate(conference.startDate)} to {formatDate(conference.endDate)}</p>
-                                            <p className='small'>Location: {conference.location}</p>
-                                            <Card.Text>{conference.description}</Card.Text>
-                                        </Card.Body>
+                                    {/* <Card border='dark' className="text-white">  Nardge*/}
+                                    <Card border='dark' className="text-white card-link">
+                                        <Card.Img className='img' src={conference.image} alt={conference.name} />
+                                        <Card.ImgOverlay>
+                                            <Card.Title className="lg">{conference.name}</Card.Title>
+                                            <Card.Text>From {formatDate(conference.startDate)} to {formatDate(conference.endDate)}</Card.Text>
+                                            <Card.Text className='small'>Location: {conference.location}</Card.Text>
+                                            <Card.Title>{conference.description}</Card.Title>
+                                        </Card.ImgOverlay>
                                     </Card>
                                 </Link>
+                                <br />
                             </Col>
                         );
                     })}

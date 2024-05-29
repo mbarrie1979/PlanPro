@@ -37,6 +37,7 @@ query conferences {
     startDate
     endDate
     location
+    image
   }
 }
 `;
@@ -50,6 +51,7 @@ export const GET_CONFERENCE = gql`
       startDate
       endDate
       location
+      image
     }
   }
 `;
