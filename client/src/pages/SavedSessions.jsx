@@ -26,6 +26,7 @@ const SavedSessions = () => {
 
   useEffect(() => {
     if (data) {
+      console.log(data)
       setUserData(data.me);
       // Fetch conference names for saved sessions
       data.me.savedSessions.forEach(session => {
@@ -123,6 +124,7 @@ const SavedSessions = () => {
                     <Card.Title>{session.name}</Card.Title>
                     <p className='small'>Presenters: {session.presenters.join(', ')}</p>
                     <p className='small'>Date: {formatDate(session.date)}</p>
+                    <p className='small'>Time: {session.time}</p>
                     <p className='small'>Duration: {session.duration} minutes</p>
                     <p className='small'>Room: {session.room}</p>
                     <Card.Text>{session.description}</Card.Text>

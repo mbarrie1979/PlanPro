@@ -29,6 +29,7 @@ const typeDefs = `
     room: String!
     users: [User]
     conferenceId: ID!
+    userCount: Int!
   }
   type User {
     _id: ID!
