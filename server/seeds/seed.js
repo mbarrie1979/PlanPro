@@ -14,6 +14,7 @@ async function seedDatabase() {
       map[conf.name] = conf._id;
       return map;
     }, {});
+    console.log('Conference Map:', conferenceMap)
 
     // Update sessions to include the correct conferenceId
     const sessionsWithConferenceId = seedData.sessions.map(session => {
@@ -26,14 +27,14 @@ async function seedDatabase() {
       }
       return session;
     });
-
+    // console.log('Sessions w/ conf id:', sessionsWithConferenceId)
 
 
     // Insert sessions and save the inserted sessions
     const insertedSessions = await Session.insertMany(sessionsWithConferenceId);
 
-    // Insert users and reference session IDs
-    const userPromises = seedData.users.map(user => {
+     // Insert users and reference session IDs
+     const insertedUsers = await Promise.all(seedData.users.map(user => {
       // Check if there are sessions in the array
       if (insertedSessions.length > 0) {
         // Pick 3 random sessions for the user
@@ -41,8 +42,15 @@ async function seedDatabase() {
         user.savedSessions = randomSessions.map(session => session._id);
       }
       return new User(user).save();
-    });
-    await Promise.all(userPromises);
+    }));
+
+
+    // Update sessions to include user references
+    for (const user of insertedUsers) {
+      for (const sessionId of user.savedSessions) {
+        await Session.updateOne({ _id: sessionId }, { $push: { users: user._id } });
+      }
+    }
 
     console.log('Database seeded successfully');
   } catch (error) {
