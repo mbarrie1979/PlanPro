@@ -17,6 +17,7 @@ const Conference = () => {
     });
     const { loading: loadingSessions, data: sessionData } = useQuery(GET_SESSIONS_BY_CONFERENCE, {
         variables: { conferenceId: id },
+        fetchPolicy: 'network-only', 
     });
     // Fetch user data including saved sessions
     const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
@@ -46,7 +47,9 @@ const Conference = () => {
         // console.log(savedSessionIds)
     }, [savedSessionIds]);
 
-    const [saveSession] = useMutation(SAVE_SESSION);
+    const [saveSession] = useMutation(SAVE_SESSION, {
+        refetchQueries: [{ query: GET_SESSIONS_BY_CONFERENCE, variables: { conferenceId: id } }],
+    });
 
     const handleSaveSession = async (sessionId) => {
         // console.log('Session ID:', sessionId)
@@ -81,7 +84,7 @@ const Conference = () => {
 
     const conference = conferenceData.conference;
     const sessions = sessionData.sessionsByConference;
-    // console.log(conferenceData)
+    console.log(sessions)
 
     return (
         <>
@@ -107,8 +110,10 @@ const Conference = () => {
                                     <p>{session.description}</p>
                                     <p>Presented by: {session.presenters.join(', ')}</p>
                                     <p>On {formatDate(session.date)}</p>
+                                    <p>Time {session.time}</p>
                                     <p>Duration: {session.duration} minutes</p>
                                     <p>Room: {session.room}</p>
+                                    <p>Users attending: {session.userCount}</p>
                                     {Auth.loggedIn() && (
                                         <Button
                                             disabled={savedSessionIds?.some((savedSessionId) => savedSessionId === session._id)}
