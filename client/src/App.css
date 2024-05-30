@@ -58,7 +58,7 @@ h6 {
 .card-link:hover{
     box-shadow: 0 0 10px 0 rgba(0, 0, 0.5, 0.5);
     width: 115%;
-    margin: -3rem;
+    margin: -2rem;
 }
 
 .small {
