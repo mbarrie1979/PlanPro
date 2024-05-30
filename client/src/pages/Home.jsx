@@ -43,7 +43,7 @@ const Home = () => {
     }
     return (
         <>
-            <div className="text-light text-center bg-dark p-5">
+            <div className="text-light text-center bg-dark p-5 banner">
                 <Container>
                     <h1>View Upcoming Conferences</h1>
                 </Container>
