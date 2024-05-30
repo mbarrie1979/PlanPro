@@ -41,6 +41,21 @@ export const ADD_CONFERENCE = gql`
     }
 `;
 
+export const CREATE_SESSION = gql`
+mutation CreateSession($name: String!, $description: String!, $date: Date!, $time: String !, $presenters: [String]!, $duration: Int!, $room: String!, $conferenceId: ID!) {
+  createSession(name: $name, description: $description, date: $date, time: $time,  presenters: $presenters, duration: $duration, room: $room, conferenceId: $conferenceId) {
+    conferenceId
+    date
+    time
+    description
+    duration
+    name
+    presenters
+    room
+  }
+}
+`;
+
 
 
 export const SAVE_BOOK = gql`

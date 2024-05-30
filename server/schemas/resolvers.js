@@ -62,6 +62,13 @@ const resolvers = {
             await conference.save();
             return conference;
         },
+        createSession: async (_, {name,description, date, time, presenters,duration, 
+                                room, conferenceId}) =>{
+            const session = new Session({name,description, date, time, presenters,duration, 
+                room, conferenceId});
+            await session.save();
+            return session;
+        },
         saveBook: async (_, { userId, book }) => {
             const user = await User.findById(userId);
             if (!user) {
