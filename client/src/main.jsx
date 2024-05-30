@@ -9,6 +9,7 @@ import SavedSessions from './pages/SavedSessions'
 import Home from './pages/Home.jsx'
 import Conference from './pages/Conference.jsx'
 import ConferenceForm from './components/ConferenceForm.jsx'
+import SessionForm from './components/SessionForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       },{
         path: '/addConference',
         element: <ConferenceForm />,  
+      },
+      {
+        path: '/addSession',
+        element: <SessionForm />,  
       }
     ]
   }
