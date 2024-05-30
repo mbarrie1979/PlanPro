@@ -43,12 +43,12 @@ const Home = () => {
     }
     return (
         <>
-            <div className="text-light text-center bg-dark p-5">
+            <div className="text-light text-center bg-dark p-5 banner">
                 <Container>
                     <h1>View Upcoming Conferences</h1>
                 </Container>
             </div >
-            <Container>
+            <Container className="px-4">
                 <h2 className='pt-4'>
                     {conferencesData.length
                         ? `Viewing ${conferencesData.length} upcoming ${conferencesData.length === 1 ? 'conference' : 'conferences'}:`
@@ -57,10 +57,12 @@ const Home = () => {
                 
                 <hr></hr>
                 <br></br>
-                <Row>
+                <Row className="card-row gx-5">
                     {conferencesData.map((conference) => {
                         return (
-                            <Col key={conference._id} md="4">
+                            <Col key={conference._id} md="4" className="card" style={{
+                    backgroundImage: `url(${conference.image})`
+                }}>
                                 <Link to={`/conference/${conference._id}`} style={{ textDecoration: 'none' }}>
                                     {/* <Card border='dark' className="text-white">  Nardge*/}
                                     <Card border='dark' className="text-white card-link">
@@ -73,10 +75,12 @@ const Home = () => {
                                         </Card.ImgOverlay>
                                     </Card>
                                 </Link>
-                                <br />
+
                             </Col>
+                            
                         );
                     })}
+                    <br />
                 </Row>
             </Container>
 
