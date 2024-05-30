@@ -8,6 +8,8 @@ import SavedBooks from './pages/SavedBooks'
 import SavedSessions from './pages/SavedSessions'
 import Home from './pages/Home.jsx'
 import Conference from './pages/Conference.jsx'
+import ConferenceForm from './components/ConferenceForm.jsx'
+import SessionForm from './components/SessionForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -17,9 +19,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <SearchBooks />
-      }, {
-        path: '/home',
         element: <Home />
       }, {
         path: '/saved',
@@ -31,7 +30,14 @@ const router = createBrowserRouter([
       }, {
         path: '/conference/:id',
         element: <Conference />, // Add the dynamic Conference route
+      },{
+        path: '/addConference',
+        element: <ConferenceForm />,  
       },
+      {
+        path: '/addSession',
+        element: <SessionForm />,  
+      }
     ]
   }
 ])

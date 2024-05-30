@@ -6,7 +6,7 @@ class AuthService {
   // get user data
   getProfile() {
     const decoded = decode(this.getToken());
-    console.log(decoded)
+    // console.log(decoded)
     return decoded
   }
 
@@ -21,6 +21,7 @@ class AuthService {
   isTokenExpired(token) {
     try {
       const decoded = decode(token);
+      // console.log("Decoded token: " + decoded);
       if (decoded.exp < Date.now() / 1000) {
         return true;
       } else return false;
@@ -37,7 +38,7 @@ class AuthService {
   login(idToken) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/home');
+    window.location.assign('/');
   }
 
   logout() {

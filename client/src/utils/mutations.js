@@ -26,6 +26,38 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_CONFERENCE = gql`
+  mutation addConference($name: String!, $description: String!, $startDate: Date!, $endDate: Date!,
+                            $location: String!, $image: String!
+  ) {
+    addConference(name: $name, description: $description, startDate: $startDate, endDate: $endDate, location: $location, image: $image) 
+       {
+        _id
+        name
+        description 
+        location
+        image
+      }
+    }
+`;
+
+export const CREATE_SESSION = gql`
+mutation CreateSession($name: String!, $description: String!, $date: Date!, $time: String !, $presenters: [String]!, $duration: Int!, $room: String!, $conferenceId: ID!) {
+  createSession(name: $name, description: $description, date: $date, time: $time,  presenters: $presenters, duration: $duration, room: $room, conferenceId: $conferenceId) {
+    conferenceId
+    date
+    time
+    description
+    duration
+    name
+    presenters
+    room
+  }
+}
+`;
+
+
+
 export const SAVE_BOOK = gql`
   mutation saveBook($userId: ID!, $book: BookInput!) {
     saveBook(userId: $userId, book: $book) {

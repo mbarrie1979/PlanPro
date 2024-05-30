@@ -1,9 +1,10 @@
 const { User, Session, Conference } = require('../models');
 const { signToken } = require('../utils/auth');
-const { DateTimeResolver } = require('graphql-scalars');
+const { DateTimeResolver, DateResolver } = require('graphql-scalars');
 
 const resolvers = {
     DateTime: DateTimeResolver,
+    Date: DateResolver,
     Query: {
         // me: async (parent, args, context) => {
         //     console.log('Context:', context); // Log the context
@@ -29,13 +30,20 @@ const resolvers = {
         conference: async (_, { id }) => {
             return Conference.findById(id);
         },
-        sessions: async (parent, args, context) => {
+        sessions: async () => {
+            return await Session.find().populate('users');
+        },
+        sessionsByConference: async (parent, { conferenceId }, context) => {
+            return await Session.find({ conferenceId }).populate('users');
+        },
+    },
 
-            return Session.find();
-        },
-        sessionsByConference: async (_, { conferenceId }) => {
-            return await Session.find({ conferenceId });
-        },
+    Session: {
+        userCount: async (parent) => {
+            const session = await Session.findById(parent._id).populate('users');
+            console.log('Session User Count:', parent.users.length); // Add this to debug
+            return session.users.length;
+        }
     },
     Mutation: {
         login: async (_, { email, password }) => {
@@ -56,6 +64,20 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+        addConference: async (_, { name, description, startDate, endDate, location, image }) => {
+            const conference = new Conference({ name, description, startDate, endDate, location, image });
+            await conference.save();
+            return conference;
+        },
+        createSession: async (_, { name, description, date, time, presenters, duration,
+            room, conferenceId }) => {
+            const session = new Session({
+                name, description, date, time, presenters, duration,
+                room, conferenceId
+            });
+            await session.save();
+            return session;
+        },
         saveBook: async (_, { userId, book }) => {
             const user = await User.findById(userId);
             if (!user) {
@@ -75,9 +97,19 @@ const resolvers = {
             if (!session) {
                 throw new Error('Session not found');
             }
-            // console.log('User before saving session:', user);
-            user.savedSessions.push(sessionId);
+
+            // Add the session ID to the user's savedSessions if it isn't already there
+            if (!user.savedSessions.includes(sessionId)) {
+                user.savedSessions.push(sessionId);
+            }
+            // Add the user ID to the session's users if it isn't already there
+            if (!session.users.includes(userId)) {
+                session.users.push(userId);
+            }
+            // Save both documents
             await user.save();
+            await session.save();
+
             // Populate the savedSessions field
             const populatedUser = await User.findById(userId).populate('savedSessions');
             return populatedUser;
@@ -103,10 +135,24 @@ const resolvers = {
                     throw new Error('User not found');
                 }
 
+                const session = await Session.findById(sessionId);
+                if (!session) {
+                    throw new Error('Session not found');
+                }
+
+                // Filter out the sessionId from user's savedSessions
                 user.savedSessions = user.savedSessions.filter(session => session.toString() !== sessionId);
+
+                // Filter out the userId from session's users
+                session.users = session.users.filter(user => user.toString() !== userId);
+
                 await user.save();
+                await session.save();
+
+                // Populate the savedSessions field
                 const populatedUser = await User.findById(userId).populate('savedSessions');
                 console.log('Updated User:', JSON.stringify(populatedUser, null, 2));
+
                 return populatedUser;
             } catch (error) {
                 console.error('Resolver Error:', error.message);

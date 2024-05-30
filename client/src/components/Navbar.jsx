@@ -14,6 +14,7 @@ const AppNavbar = () => {
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
+
           <Navbar.Brand as={Link} to='/home' className='brand'>
             PlanPro
           </Navbar.Brand>

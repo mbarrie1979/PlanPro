@@ -8,6 +8,7 @@ import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { formatDate } from '../utils/formatdate';
 import { saveSessionIds, getSavedSessionIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
+import '../App.css';
 
 const Conference = () => {
     const { id } = useParams();
@@ -16,9 +17,10 @@ const Conference = () => {
     });
     const { loading: loadingSessions, data: sessionData } = useQuery(GET_SESSIONS_BY_CONFERENCE, {
         variables: { conferenceId: id },
+        fetchPolicy: 'network-only', 
     });
-// Fetch user data including saved sessions
-const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
+    // Fetch user data including saved sessions
+    const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
     const [savedSessionIds, setSavedSessionIds] = useState([]);
 
 
@@ -42,16 +44,18 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
 
     useEffect(() => {
         saveSessionIds(savedSessionIds);
-        console.log(savedSessionIds)
+        // console.log(savedSessionIds)
     }, [savedSessionIds]);
 
-    const [saveSession] = useMutation(SAVE_SESSION);
+    const [saveSession] = useMutation(SAVE_SESSION, {
+        refetchQueries: [{ query: GET_SESSIONS_BY_CONFERENCE, variables: { conferenceId: id } }],
+    });
 
     const handleSaveSession = async (sessionId) => {
         // console.log('Session ID:', sessionId)
         try {
             const userId = Auth.getProfile().data._id;
-            console.log('User ID:', userId);
+            // console.log('User ID:', userId);
             const { data } = await saveSession({
                 variables: { userId, sessionId },
             });
@@ -80,12 +84,15 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
 
     const conference = conferenceData.conference;
     const sessions = sessionData.sessionsByConference;
-    // console.log(sessionData)
+    console.log(sessions)
 
     return (
         <>
-            <div className="text-light bg-dark p-5">
-                <Container>
+            <div className="text-light bg-dark d-flex justify-content-center">
+                <Container className="conference-container" style={{
+                    backgroundImage: `url(${conference.image})`
+                }}
+                >
                     <h1>{conference.name}</h1>
                     <p>{conference.description}</p>
                     <p>From {formatDate(conference.startDate)} to {formatDate(conference.endDate)}</p>
@@ -103,11 +110,13 @@ const { loading: loadingUserData, data: userData } = useQuery(GET_ME);
                                     <p>{session.description}</p>
                                     <p>Presented by: {session.presenters.join(', ')}</p>
                                     <p>On {formatDate(session.date)}</p>
+                                    <p>Time {session.time}</p>
                                     <p>Duration: {session.duration} minutes</p>
                                     <p>Room: {session.room}</p>
+                                    <p>Users attending: {session.userCount}</p>
                                     {Auth.loggedIn() && (
                                         <Button
-                                            disabled={savedSessionIds?.some((savedSessionId) => savedSessionId === session)}
+                                            disabled={savedSessionIds?.some((savedSessionId) => savedSessionId === session._id)}
                                             className='btn-block btn-info'
                                             onClick={() => handleSaveSession(session._id)}>
                                             {savedSessionIds?.some((savedSessionId) => savedSessionId === session._id)

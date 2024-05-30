@@ -11,7 +11,7 @@ const conferenceSchema = new Schema(
     description: {
       type: String,
       required: true,
-      unique: true,
+      unique: false,
     },
     startDate: {
       type: Date,

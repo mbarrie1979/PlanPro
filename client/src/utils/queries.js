@@ -12,8 +12,10 @@ export const GET_ME = gql`
         description
         presenters
         date
+        time
         duration
         room
+        conferenceId
       }
       savedBooks {
         authors
@@ -66,8 +68,13 @@ export const GET_SESSIONS_BY_CONFERENCE = gql`
       description
       presenters
       date
+      time
       duration
       room
+      userCount
+      users {
+        _id
+      }
     }
   }
 `;
