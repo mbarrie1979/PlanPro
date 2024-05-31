@@ -1,0 +1,219 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+*::selection {
+  background-color: rgb(0, 0, 0);
+  color: rgb(1, 242, 255);
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  animation: title 1s 1;
+  position: relative;
+  color: black;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+.title:hover {
+  transform: translateY(-3px);
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  color: rgb(1, 3, 70);
+}
+
+.title::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(to right, white, grey);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+.title:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@keyframes title {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.lsLink {
+  transition: all 0.2s ease-in-out;
+}
+.lsLink:hover {
+  color: rgb(139, 245, 190);
+  transform: translateY(-4px);
+}
+
+.major-mono-display-regular {
+  font-family: "Major Mono Display", monospace;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 0px 0px 5px rgb(246, 245, 245);
+}
+
+.rock-salt-regular {
+  font-family: "Rock Salt", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  background-color: transparent;
+  text-shadow: 0px 0px 5px white;
+  animation: side 1s ease-in-out;
+}
+.cardBody {
+  transition: all 0.3s ease-in-out;
+  margin: 8px;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.153);
+  border-radius: 5px;
+}
+
+.cardBody:hover {
+  transform: translateY(-5px);
+  background-color: rgba(2, 220, 235, 0.607);
+  box-shadow: 10px 10px 10px black;
+}
+
+.foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  line-height: 100px;
+}
+.link {
+  transition: all 0.3s ease-in-out;
+}
+.link:hover {
+  font-weight: bolder;
+  transform: translateY(-4px);
+}
+.box {
+  animation: side 1s ease-in-out;
+}
+
+.box:hover {
+  transform: translateY(-200px);
+}
+.con-box {
+  font-weight: bold;
+  animation: side 1s ease-in-out, 1.5s ease-in;
+  row-gap: 10px;
+}
+@keyframes side {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.conferenceBox {
+  animation: slideIn 1s ease-in-out;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.saved-ses {
+  animation: slideIn 1s ease-in-out;
+}
+
+.home {
+  animation: side 1s ease-in-out;
+}
+.card-img {
+  height: 15rem;
+  overflow: auto;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.card-img:hover {
+  transform: scale(1.05);
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0px 0px 10px rgb(4, 8, 253);
+  font-weight: bolder;
+}
+@keyframes zoom-in {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.5, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.card-session {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 5px red;
+}
+.card-session:hover {
+  transform: translateY(-4px);
+  background-color: rgba(255, 0, 0, 0.351);
+  box-shadow: 0px 0px 10px rgb(255, 0, 0);
+}
+.button {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.button::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.316);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: top;
+  transition: transform 0.3s ease-in;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.button:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom;
+}

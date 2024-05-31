@@ -24,10 +24,12 @@ const typeDefs = `
     description: String!
     presenters: [String]!
     date: Date
+    time: String!
     duration: Int
     room: String!
     users: [User]
     conferenceId: ID!
+    userCount: Int!
   }
   type User {
     _id: ID!
@@ -54,6 +56,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addConference(name: String!, description: String!, startDate: Date!, endDate: Date!, location: String!, image: String!): Conference
+    createSession(name: String!, description: String!, date: Date!, time: String!, presenters: [String]!, duration: Int!, room: String!, conferenceId: ID!  ): Session
     saveBook(userId: ID!, book: BookInput!): User
     saveSession(userId: ID!, sessionId: ID!): User
     removeSession(userId: ID!, sessionId: ID!): User
@@ -61,14 +64,13 @@ type Mutation {
   }
   input BookInput {
     authors: [String]
-    description: String!
+    description: String! 
     bookId: String!
     image: String
     link: String
     title: String!
   }
   input SessionInput {
-    _id: ID!
     name: String
     description: String!
     presenters: [String]!
