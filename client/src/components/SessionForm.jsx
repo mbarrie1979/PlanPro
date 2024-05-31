@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_SESSION } from '../utils/mutations';
+import { GET_CONFERENCES } from '../utils/queries';
+
 import '../styles/SessionForm.css';
 
 const SessionForm = () => {
+  const { loading, data } = useQuery(GET_CONFERENCES);
+  const [conferenceData, setConferenceData] = useState([]);
+
   // set initial form state
   const [sessionFormData, setSessionFormData] = useState({
     name: '',
@@ -23,6 +28,17 @@ const SessionForm = () => {
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+ 
+  // When the component mounts to the VDOM, run this callback to load conferences
+  useEffect(() => {
+    console.log("In use effect");
+    if (data){
+     console.log("Conf data: ") + JSON.stringify(data);
+    console.log(data);
+     //setConferenceNames(conferenceData.map(conference => conference.name));
+     setConferenceData(data);
+    }
+  }, [data])
 
 
   const [createSession, { error }] = useMutation(CREATE_SESSION);
@@ -74,6 +90,10 @@ const SessionForm = () => {
     });
 };
 
+if (!data ){
+  return <h2>Loading...</h2>
+}
+
 return (
   <>
     {/* This is needed for the validation functionality above */}
@@ -86,6 +106,25 @@ return (
         Added the session to the conference!
       </Alert>
       <h2 className="formTitle"> Add Session Form</h2>
+      <Form.Group className='mb-3 sessionForm'>
+        <Form.Label htmlFor='conferenceId'>*Conference</Form.Label>
+        <Form.Control
+          as = 'select'
+          name='conferenceId'
+          onChange={handleInputChange}
+        >
+          <option disabled selected  value="">Select a Conference</option>
+        { data.conferences.map((conference) => (
+            <option key={conference._id} value={conference._id}>{conference.name}</option>
+          ))} 
+        </Form.Control> 
+          {/* {console.log("Data is: " + JSON.stringify(data.conferences))}
+           { data.conferences.map((conference) => console.log(conference))}  */}
+           
+           
+           
+        <Form.Control.Feedback type='invalid'>Name is required!</Form.Control.Feedback>
+      </Form.Group>
       <Form.Group className='mb-3 sessionForm'>
         <Form.Label htmlFor='name'>*Name</Form.Label>
         <Form.Control
