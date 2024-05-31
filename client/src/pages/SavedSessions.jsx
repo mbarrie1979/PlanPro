@@ -17,6 +17,7 @@ const SavedSessions = () => {
   const [userData, setUserData] = useState({});
   const [conferenceNames, setConferenceNames] = useState({});
   const [sessionsByConference, setSessionsByConference] = useState({});
+  const [sessionConflicts, setSessionConflicts] = useState({});
   const { loading, data, error: getMeError } = useQuery(GET_ME);
   const [removeSession, { error: removeSessionError }] = useMutation(REMOVE_SESSION);
   // to get conference name
@@ -47,6 +48,31 @@ const SavedSessions = () => {
       }, {});
 
       setSessionsByConference(groupedSessions);
+      // Detect conflicts
+      const conflicts = Object.keys(groupedSessions).reduce((conflictAcc, conferenceId) => {
+        const sessions = groupedSessions[conferenceId];
+        const timeMap = sessions.reduce((timeAcc, session) => {
+          if (!timeAcc[session.time]) {
+            timeAcc[session.time] = [];
+          }
+          timeAcc[session.time].push(session);
+          return timeAcc;
+        }, {});
+
+        const conferenceConflicts = Object.keys(timeMap).reduce((conflictList, time) => {
+          if (timeMap[time].length > 1) {
+            conflictList.push(time);
+          }
+          return conflictList;
+        }, []);
+
+        if (conferenceConflicts.length > 0) {
+          conflictAcc[conferenceId] = conferenceConflicts;
+        }
+
+        return conflictAcc;
+      }, {});
+      setSessionConflicts(conflicts);
     }
   }, [data, getConference, conferenceNames]);
 
@@ -59,7 +85,7 @@ const SavedSessions = () => {
     }
   }, [conferenceData]);
 
-
+  console.log("conflicts:", sessionConflicts)
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteSession = async (sessionId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -102,44 +128,47 @@ const SavedSessions = () => {
   // console.log(userData);
   return (
     <>
-    <div className="text-light bg-dark p-5">
+      <div className="text-light bg-dark p-5">
+        <Container>
+          <h1>Viewing saved sessions!</h1>
+        </Container>
+      </div>
       <Container>
-        <h1>Viewing saved sessions!</h1>
+        <h2 className='pt-5'>
+          {userData.savedSessions.length
+            ? `Viewing ${userData.savedSessions.length} saved ${userData.savedSessions.length === 1 ? 'session' : 'sessions'}:`
+            : 'You have no saved sessions!'}
+        </h2>
+        {Object.keys(sessionsByConference).map(conferenceId => (
+          <div key={conferenceId} className='mb-4'>
+            <h3>{conferenceNames[conferenceId] || 'Loading...'}</h3>
+            {sessionConflicts[conferenceId] && sessionConflicts[conferenceId].length > 0 && (
+              <h2 style={{ color: 'red' }}>Conflict detected for times: {sessionConflicts[conferenceId].join(', ')}</h2>
+            )}
+            <Row>
+              {sessionsByConference[conferenceId].map((session) => (
+                <Col key={session._id} md="4">
+                  <Card border='dark'>
+                    <Card.Body>
+                      <Card.Title>{session.name}</Card.Title>
+                      <p className='small'>Presenters: {session.presenters.join(', ')}</p>
+                      <p className='small'>Date: {formatDate(session.date)}</p>
+                      <p className='small'>Time: {session.time}</p>
+                      <p className='small'>Duration: {session.duration} minutes</p>
+                      <p className='small'>Room: {session.room}</p>
+                      <Card.Text>{session.description}</Card.Text>
+                      <Button className='btn-block btn-danger' onClick={() => handleDeleteSession(session._id)}>
+                        Delete this Session!
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </div>
+        ))}
       </Container>
-    </div>
-    <Container>
-      <h2 className='pt-5'>
-        {userData.savedSessions.length
-          ? `Viewing ${userData.savedSessions.length} saved ${userData.savedSessions.length === 1 ? 'session' : 'sessions'}:`
-          : 'You have no saved sessions!'}
-      </h2>
-      {Object.keys(sessionsByConference).map(conferenceId => (
-        <div key={conferenceId} className='mb-4'>
-          <h3>{conferenceNames[conferenceId] || 'Loading...'}</h3>
-          <Row>
-            {sessionsByConference[conferenceId].map((session) => (
-              <Col key={session._id} md="4">
-                <Card border='dark'>
-                  <Card.Body>
-                    <Card.Title>{session.name}</Card.Title>
-                    <p className='small'>Presenters: {session.presenters.join(', ')}</p>
-                    <p className='small'>Date: {formatDate(session.date)}</p>
-                    <p className='small'>Time: {session.time}</p>
-                    <p className='small'>Duration: {session.duration} minutes</p>
-                    <p className='small'>Room: {session.room}</p>
-                    <Card.Text>{session.description}</Card.Text>
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteSession(session._id)}>
-                      Delete this Session!
-                    </Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </div>
-      ))}
-    </Container>
-  </>
+    </>
   );
 };
 
