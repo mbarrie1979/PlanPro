@@ -10,12 +10,14 @@ body {
 }
 
 nav {
-  background: url("/assets/images/color-swirl-bg.jpeg")  center center fixed;
+  /* background: url("/assets/images/color-swirl-bg.jpeg")  center center fixed; */
 }
+
+
 
 .brand {
   font-family: "Abril Fatface", serif;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .login {
@@ -28,6 +30,32 @@ nav {
   /* background: url("/assets/images/blur-peeps-bg.jpeg") no-repeat center center fixed; */
   background-size: cover;
  
+
+}
+
+.header {
+  text-align: left;
+  line-height: 5rem;
+  font-size: 4rem;
+}
+
+.sub-head {
+  text-align: left;
+  line-height: 3rem;
+  font-size: 1.2rem;
+
+}
+
+.header-button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  height: 4rem;
+  width: 10rem;
+}
+
+.banner-image {
+  width: 90%;
+  height: 80%;
 
 }
 

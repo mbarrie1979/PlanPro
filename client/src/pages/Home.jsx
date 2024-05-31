@@ -40,12 +40,30 @@ const Home = () => {
   return (
     <>
       <div className="text-light text-center bg-dark p-5 banner">
-        <Container>
-          <h1 className="rock-salt-regular">View Upcoming Conferences</h1>
-        </Container>
+        <Row>
+            <Col>
+                <Container>
+                {/* <h1 className="rock-salt-regular">View Upcoming Conferences</h1> */}
+                <h1 className="rock-salt-regular header">Your personalized professional conference planner</h1>
+                <h6 className="rock-salt-regular sub-head">View upcoming conferences from all over and add or remove your favorite sessions to your conference plan!</h6>
+                <Button className="rock-salt-regular header-button" href="/signup">
+                    <div className="text-center rock-salt-regular">
+                        Get Started!
+                    </div>
+                </Button>
+                </Container>
+            </Col>
+            <Col>
+                <Container>
+                    <div>
+                        <img src="/assets/images/op1.png" alt="people" className="banner-image"/>
+                    </div>
+                </Container>
+            </Col>
+        </Row>
       </div>
-      <Container>
-        <h2 className="home pt-4 major-mono-display-regular">
+      <Container className="main">
+        <h2 className="home pt-4 major-mono-display-regular text-light">
           {conferencesData.length
             ? `Viewing ${conferencesData.length} upcoming ${
                 conferencesData.length === 1 ? "conference" : "conferences"
@@ -58,10 +76,10 @@ const Home = () => {
         <Row className="home">
           {conferencesData.map((conference) => {
             return (
-              <Col key={conference._id} md="4">
+              <Col key={conference._id} md="4" >
                 <Link
                   to={`/conference/${conference._id}`}
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none",  backgroundImage: `url(${conference.image})`, }}
                 >
                   {/* <Card border='dark' className="text-white">  Nardge*/}
                   <Card border="dark" className="card-img text-white card-link">
