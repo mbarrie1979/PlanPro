@@ -153,7 +153,7 @@ const Conference = () => {
                       className="btn btn-dark button"
                       onClick={() => handleSaveSession(session._id)}
                     >
-                      <i class="fa-solid fa-save fa-beat"></i> &nbsp;
+                      <i className="fa-solid fa-save fa-beat"></i> &nbsp;
                       {savedSessionIds?.some(
                         (savedSessionId) => savedSessionId === session._id
                       )
