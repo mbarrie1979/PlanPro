@@ -38,6 +38,7 @@ const typeDefs = `
     savedBooks: [Book]!
     savedSessions: [Session]!
     bookCount: Int!
+    isAdmin: Boolean!
   }
   type Auth {
     token: ID!

@@ -36,10 +36,12 @@ const authMiddleware = async ({ req }) => {
 };
 
 // Function to sign a new token
-const signToken = function ({ username, email, _id }) {
-  const payload = { username, email, _id };
+const signToken = function ({ username, email, _id , isAdmin}) {
+  console.log("In sign toke, isAdmin: " + isAdmin);
+  const payload = { username, email, _id, isAdmin };
   return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
 };
+
 
 module.exports = {
   AuthenticationError,

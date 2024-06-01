@@ -240,6 +240,7 @@ module.exports = {
       phone: "555-555-5555",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "bob_s",
@@ -247,6 +248,7 @@ module.exports = {
       phone: "555-555-5556",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "carol_w",
@@ -254,6 +256,7 @@ module.exports = {
       phone: "555-555-5557",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "david_b",
@@ -261,6 +264,7 @@ module.exports = {
       phone: "555-555-5558",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "eve_d",
@@ -268,6 +272,7 @@ module.exports = {
       phone: "555-555-5559",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "frank_m",
@@ -275,6 +280,7 @@ module.exports = {
       phone: "555-555-5560",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "grace_w",
@@ -282,6 +288,7 @@ module.exports = {
       phone: "555-555-5561",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "hank_m",
@@ -289,6 +296,7 @@ module.exports = {
       phone: "555-555-5562",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "ivy_t",
@@ -296,6 +304,7 @@ module.exports = {
       phone: "555-555-5563",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "jack_a",
@@ -303,6 +312,7 @@ module.exports = {
       phone: "555-555-5564",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "kimberly_t",
@@ -310,6 +320,7 @@ module.exports = {
       phone: "555-555-5565",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "liam_h",
@@ -317,6 +328,7 @@ module.exports = {
       phone: "555-555-5566",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "mia_c",
@@ -324,6 +336,7 @@ module.exports = {
       phone: "555-555-5567",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "noah_l",
@@ -331,6 +344,7 @@ module.exports = {
       phone: "555-555-5568",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "olivia_l",
@@ -338,6 +352,7 @@ module.exports = {
       phone: "555-555-5569",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "peter_w",
@@ -345,6 +360,7 @@ module.exports = {
       phone: "555-555-5570",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "quinn_h",
@@ -352,6 +368,7 @@ module.exports = {
       phone: "555-555-5571",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "rachel_a",
@@ -359,6 +376,7 @@ module.exports = {
       phone: "555-555-5572",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "steve_y",
@@ -366,6 +384,7 @@ module.exports = {
       phone: "555-555-5573",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
     },
     {
       username: "tina_k",
@@ -373,6 +392,15 @@ module.exports = {
       phone: "555-555-5574",
       password: "securepassword123",
       savedSessions: [],
+      isAdmin: false,
+    },
+    {
+      username: "admin",
+      email: "admin@example.com",
+      phone: "555-555-5574",
+      password: "securepassword123",
+      savedSessions: [],
+      isAdmin: true,
     },
   ],
 };
