@@ -17,6 +17,18 @@ class AuthService {
     return !!token && !this.isTokenExpired(token); // handwaiving here
   }
 
+  isAdmin(){
+    const token = this.getToken();
+    if (token){
+      const decoded = decode(token);
+      console.log("Decoded token: " + JSON.stringify(decoded));
+      if (decoded.data.isAdmin){
+        return true;
+      } 
+    }
+    return false;
+  }
+
   // check if token is expired
   isTokenExpired(token) {
     try {

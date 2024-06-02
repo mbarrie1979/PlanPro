@@ -26,6 +26,9 @@ const userSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Session',
     }],
+    isAdmin: {
+      type: Boolean,
+    },
     // set savedBooks to be an array of data that adheres to the bookSchema
     savedBooks: [bookSchema],
     
