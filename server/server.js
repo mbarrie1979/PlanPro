@@ -5,6 +5,9 @@ const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const {verifySMTP, sendDefaultMessage, sendDefaultSendGridMessage} = require('./utils/mailsender');
+const {sendReminder} = require('./utils/reminder');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -41,6 +44,11 @@ const startApolloServer = async () => {
       console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
     });
   });
+
+
 };
 
 startApolloServer();
+
+// Schedule email reminder check to run every minute
+// setInterval(sendReminder, 60000);
