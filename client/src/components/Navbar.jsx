@@ -71,6 +71,41 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls="navbar" />
           <Navbar.Collapse id="navbar" className="d-flex flex-row-reverse">
             <Nav className="ml-auto d-flex">
+              {/* <Nav.Link as={Link} to='/'>
+                Search For Books
+              </Nav.Link> */}
+              {/* if user is logged in show saved books and logout */}
+              {Auth.loggedIn() ? (
+                <>
+                  {/* <Nav.Link as={Link} to='/saved'>
+                    See Your Books
+                  </Nav.Link> */}
+                  <Nav.Link
+                    as={Link}
+                    to="/mysessions"
+                    className="rock-salt-regular see-sessions text-dark"
+                  >
+                    <i className="fa-solid fa-database"></i> See Your Sessions
+                  </Nav.Link>
+                  <Nav.Link>/</Nav.Link>
+                  <Nav.Link
+                    onClick={Auth.logout}
+                    className="major-mono-display-regular text-dark"
+                  >
+                    <i className="fa-solid fa-sign-out"></i>Logout
+                  </Nav.Link>
+                </>
+              ) : (
+                <Nav.Link
+                  onClick={() => setShowModal(true)}
+                  className="major-mono-display-regular title"
+                >
+                  <span className="lsLink text-dark">
+                    {" "}
+                    <i className="fa-solid fa-user fa-fade"></i>Login/Sign Up
+                  </span>
+                </Nav.Link>
+              )}
               {renderLinks()}
             </Nav>
           </Navbar.Collapse>

@@ -141,7 +141,7 @@ const SavedSessions = () => {
         </Container>
       </div>
       <Container className="home">
-        <h2 className="pt-5 major-mono-display-regular saved-ses">
+        <h2 className="pt-5 major-mono-display-regular text-light saved-ses">
           {userData.savedSessions.length
             ? `Viewing ${userData.savedSessions.length} saved ${userData.savedSessions.length === 1 ? "session" : "sessions"
             }:`
@@ -149,7 +149,8 @@ const SavedSessions = () => {
         </h2>
         {Object.keys(sessionsByConference).map((conferenceId) => (
           <div key={conferenceId} className="mb-4">
-            <h1 className="mt-5" style={{ fontFamily: "system-ui" }}>
+            {/** fontFamily: "system-ui" */}
+            <h1 className="mt-5 text-light major-mono-display-regular" >
               {conferenceNames[conferenceId] + ":" || "Loading..."}
             </h1>
             {sessionConflicts[conferenceId] && sessionConflicts[conferenceId].length > 0 && (
