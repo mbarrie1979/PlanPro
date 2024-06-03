@@ -27,10 +27,51 @@ const AppNavbar = () => {
               </Nav.Link> */}
               {/* if user is logged in show saved books and logout */}
               {Auth.loggedIn() ? (
+                
+  function renderLinks(){
+    if (Auth.loggedIn()) {
+      console.log("User is logged in");
+      if (Auth.isAdmin()){
+        console.log("User is logged in and an admin");
+        return(
+<>
+                  <Nav.Link
+                    as={Link}
+                    to="/mysessions"
+                    className="rock-salt-regular"
+                  >
+                    <i className="fa-solid fa-database"></i> See Your Sessions
+                  </Nav.Link>
+                  <Nav.Link>/</Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/addConference"
+                    className="rock-salt-regular"
+                  >
+                    <i className="fa-solid fa-database"></i> Add Conference
+                  </Nav.Link>
+                  <Nav.Link>/</Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/addSession"
+                    className="rock-salt-regular"
+                  >
+                    <i className="fa-solid fa-database"></i> Add Session
+                  </Nav.Link>
+                  <Nav.Link>/</Nav.Link>
+                  <Nav.Link
+                    onClick={Auth.logout}
+                    className="major-mono-display-regular"
+                  >
+                    <i className="fa-solid fa-sign-out"></i>Logout
+                  </Nav.Link>
+                </>
+        )
+      }
+      else
+      return (
+
                 <>
-                  {/* <Nav.Link as={Link} to='/saved'>
-                    See Your Books
-                  </Nav.Link> */}
                   <Nav.Link
                     as={Link}
                     to="/mysessions"
@@ -46,7 +87,10 @@ const AppNavbar = () => {
                     <i className="fa-solid fa-sign-out"></i>Logout
                   </Nav.Link>
                 </>
-              ) : (
+      )
+    }
+    else{
+      return (
                 <Nav.Link
                   onClick={() => setShowModal(true)}
                   className="major-mono-display-regular title"
@@ -56,7 +100,27 @@ const AppNavbar = () => {
                     <i className="fa-solid fa-user fa-fade"></i>Login/Sign Up
                   </span>
                 </Nav.Link>
-              )}
+      )
+    }
+  }
+
+  return (
+    <>
+      <Navbar bg="dark" variant="dark" expand="sm">
+        <Container fluid>
+          <Navbar.Brand as={Link} to="/" className="major-mono-display-regular">
+            <h1 className="title major-mono-display-regular">
+              <i className="fa-solid fa-handshake fa-bounce"></i> PlanPro
+            </h1>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbar" />
+          <Navbar.Collapse id="navbar" className="d-flex flex-row-reverse">
+            <Nav className="ml-auto d-flex">
+              {/* <Nav.Link as={Link} to='/'>
+                Search For Books
+              </Nav.Link> */}
+              {/* if user is logged in show saved books and logout */}
+               {renderLinks()}
             </Nav>
           </Navbar.Collapse>
         </Container>
