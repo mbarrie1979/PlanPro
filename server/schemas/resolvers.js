@@ -60,6 +60,7 @@ const resolvers = {
         },
         addUser: async (_, { username, email, password }) => {
             const user = new User({ username, email, password });
+            user.isAdmin = false
             await user.save();
             const token = signToken(user);
             return { token, user };
