@@ -34,7 +34,7 @@ const AppNavbar = () => {
                   <Nav.Link
                     as={Link}
                     to="/mysessions"
-                    className="rock-salt-regular"
+                    className="rock-salt-regular see-sessions text-dark"
                   >
                     <i className="fa-solid fa-database"></i> See Your Sessions
                   </Nav.Link>

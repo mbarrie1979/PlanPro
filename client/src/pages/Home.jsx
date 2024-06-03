@@ -79,7 +79,7 @@ const Home = () => {
               <Col key={conference._id} md="4" >
                 <Link
                   to={`/conference/${conference._id}`}
-                  style={{ textDecoration: "none",  backgroundImage: `url(${conference.image})`, }}
+                  style={{ textDecoration: "none",  backgroundImage: `url(${conference.image})`, backgroundSize: "cover" }} className="link-tag"
                 >
                   {/* <Card border='dark' className="text-white">  Nardge*/}
                   <Card border="dark" className="card-img text-white card-link">

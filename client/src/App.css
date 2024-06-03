@@ -78,11 +78,9 @@ h6 {
 
 
 
-
 .card-link {
   flex: 1 0 auto;
   transition: 0.3s;
-  height: 100%;
 }
 
 .card-link:hover{
@@ -104,9 +102,13 @@ h6 {
 }
 
 .img {
-  opacity: 80%;
+  opacity: 90%;
   z-index: 0;
 }
+
+/* .see-sessions {
+
+} */
 
 .conference-container {
   position: relative;
