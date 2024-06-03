@@ -10,6 +10,24 @@ const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
 
+  return (
+    <>
+      <Navbar bg="light" variant="dark" expand="sm">
+        <Container fluid>
+          <Navbar.Brand as={Link} to="/" className="major-mono-display-regular">
+            <h1 className="title major-mono-display-regular brand">
+              <i className="fa-solid fa-handshake fa-bounce"></i> PlanPro
+            </h1>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbar" />
+          <Navbar.Collapse id="navbar" className="d-flex flex-row-reverse">
+            <Nav className="ml-auto d-flex">
+              {/* <Nav.Link as={Link} to='/'>
+                Search For Books
+              </Nav.Link> */}
+              {/* if user is logged in show saved books and logout */}
+              {Auth.loggedIn() ? (
+                
   function renderLinks(){
     if (Auth.loggedIn()) {
       console.log("User is logged in");
@@ -52,11 +70,12 @@ const AppNavbar = () => {
       }
       else
       return (
+
                 <>
                   <Nav.Link
                     as={Link}
                     to="/mysessions"
-                    className="rock-salt-regular"
+                    className="rock-salt-regular see-sessions text-dark"
                   >
                     <i className="fa-solid fa-database"></i> See Your Sessions
                   </Nav.Link>
