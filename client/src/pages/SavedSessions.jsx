@@ -10,8 +10,9 @@ import { useQuery, useMutation, useLazyQuery } from '@apollo/client';
 import { GET_ME, GET_CONFERENCE } from '../utils/queries';
 import { REMOVE_SESSION } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { formatDate } from '../utils/formatdate';
+import { formatDate, formatToLocalDate } from '../utils/formatdate';
 import { removeSessionId } from '../utils/localStorage';
+import { convertTo12HourFormat } from "../utils/timeConversion";
 
 const SavedSessions = () => {
   const [userData, setUserData] = useState({});
@@ -52,10 +53,11 @@ const SavedSessions = () => {
       const conflicts = Object.keys(groupedSessions).reduce((conflictAcc, conferenceId) => {
         const sessions = groupedSessions[conferenceId];
         const timeMap = sessions.reduce((timeAcc, session) => {
-          if (!timeAcc[session.time]) {
-            timeAcc[session.time] = [];
+          const convertedTime = convertTo12HourFormat(session.time);
+          if (!timeAcc[convertedTime]) {
+            timeAcc[convertedTime] = [];
           }
-          timeAcc[session.time].push(session);
+          timeAcc[convertedTime].push(session);
           return timeAcc;
         }, {});
 
@@ -169,10 +171,10 @@ const SavedSessions = () => {
                         Presenters: {session.presenters.join(", ")}
                       </p>
                       <p className="small" style={styles.text}>
-                        Date: {formatDate(session.date)}
+                        Date: {formatToLocalDate(session.date)}
                       </p>
                       <p className="small" style={styles.text}>
-                        Time: {session.time}
+                        Time: {convertTo12HourFormat(session.time)}
                       </p>
                       <p className="small" style={styles.text}>
                         Duration: {session.duration} minutes
