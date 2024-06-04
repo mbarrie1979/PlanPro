@@ -3,11 +3,13 @@ import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { GET_CONFERENCES } from "../utils/queries";
 import { formatDate } from "../utils/formatdate";
+import AuthModal from "../components/AuthModal";
 // import Auth from '../utils/auth';
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 //this component is accessed currently buy the /home route
 const Home = () => {
   const [conferencesData, setConferencesData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const {
     loading,
     data,
@@ -44,17 +46,10 @@ const Home = () => {
           <Col>
             <Container>
               {/* <h1 className="rock-salt-regular">View Upcoming Conferences</h1> */}
-              <h1 className="rock-salt-regular header">
-                Your personalized professional conference planner
-              </h1>
-              <h6 className="rock-salt-regular sub-head">
-                View upcoming conferences from all over and add or remove your
-                favorite sessions to your conference plan!
-              </h6>
-              <Button
-                className="rock-salt-regular header-button"
-                href="/signup"
-              >
+
+              <h1 className="rock-salt-regular header">Your personalized professional conference planner</h1>
+              <h6 className="rock-salt-regular sub-head">View upcoming conferences from all over and add or remove your favorite sessions to your conference plan!</h6>
+              <Button className="rock-salt-regular header-button" onClick={() => setShowModal(true)}>
                 <div className="text-center rock-salt-regular">
                   Get Started!
                 </div>
@@ -77,9 +72,8 @@ const Home = () => {
       <Container className="main">
         <h2 className="home pt-4 major-mono-display-regular text-light">
           {conferencesData.length
-            ? `Viewing ${conferencesData.length} upcoming ${
-                conferencesData.length === 1 ? "conference" : "conferences"
-              }:`
+            ? `Viewing ${conferencesData.length} upcoming ${conferencesData.length === 1 ? "conference" : "conferences"
+            }:`
             : "There are no conferences!"}
         </h2>
 
@@ -91,13 +85,8 @@ const Home = () => {
               <Col key={conference._id} md="4">
                 <Link
                   to={`/conference/${conference._id}`}
-                  style={{
-                    textDecoration: "none",
-                    backgroundImage: `url(${conference.image})`,
-                    backgroundSize: "cover",
-                  }}
-                  className="link-tag"
-                >
+
+                  style={{ textDecoration: "none", backgroundImage: `url(${conference.image})`, backgroundSize: "cover" }} className="link-tag">
                   {/* <Card border='dark' className="text-white">  Nardge*/}
                   <Card border="dark" className="card-img text-white">
                     <div className="front">
@@ -128,6 +117,7 @@ const Home = () => {
           })}
         </Row>
       </Container>
+      <AuthModal showModal={showModal} handleClose={() => setShowModal(false)} />
     </>
   );
 };
