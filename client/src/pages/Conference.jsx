@@ -106,17 +106,72 @@ const Conference = () => {
   const sessions = sessionData.sessionsByConference;
   console.log(sessions);
 
+  const styles = {
+    backgroundImage: `url(${conference.image})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    width: "100%",
+    top: "1",
+    left: "0",
+    zIndex: "1",
+  };
+
   return (
     <>
-      <div className="text-light bg-dark d-flex justify-content-center">
+      <div
+        className=" img2 conference-container text-light bg-black bg-opacity-75 d-flex justify-content-center"
+        style={styles}
+      >
         <Container
-          className="conference-container"
-          style={{
-            backgroundImage: `url(${conference.image})`,
-          }}
+        // className="conference-container"
+        // style={{
+        //   backgroundImage: `url(${conference.image})`,
+        // }}
         >
-          <div className="conferenceBox">
-            <h1 className="major-mono-display-regular">{conference.name}</h1>
+          <span>
+            <a
+              href="/"
+              className="text-decoration-none"
+              title="back to Homepage"
+            >
+              <h5
+                style={{
+                  letterSpacing: "3px",
+                  textAlign: "right",
+                  lineHeight: "50px",
+                  textShadow: "1px 2px 3px black,0px 0px 5px white",
+                }}
+                className="major-mono-display-regular homeLink mt-4"
+              >
+                <i className="fa-solid fa-angle-double-left"> Go back home !</i>
+              </h5>
+            </a>
+          </span>
+
+          <div
+            className="conferenceBox"
+            style={{
+              textShadow: "1px 2px 3px black, 0px 0px 10px white",
+              backgroundColor: "rgba(0, 0, 0, 0.552)",
+              padding: "20px",
+              borderRadius: "10px",
+              width: "100%",
+            }}
+          >
+            <h1
+              className="major-mono-display-regular"
+              style={{
+                fontWeight: "600",
+                fontSize: "50px",
+                borderBottom: "double",
+                width: "60%",
+                textShadow: "1px 2px 3px black, 0px 0px 10px white",
+                color: "white",
+              }}
+            >
+              {conference.name}
+            </h1>
             <p>{conference.description}</p>
             <p>
               From {formatDate(conference.startDate)} to{" "}
@@ -126,47 +181,71 @@ const Conference = () => {
           </div>
         </Container>
       </div>
-      <Container>
-        <h2 className="pt-5 major-mono-display-regular">
-          <i className="fa-solid fa-check-double"></i>Sessions:
-        </h2>
-        <Row className="con-box">
-          {sessions.map((session) => (
-            <Col key={session._id} md="4">
-              <Card>
-                <Card.Body className="cardBody">
-                  <Card.Title style={{ fontWeight: "bold" }}>
-                    <h6>{session.name}</h6>
-                  </Card.Title>
-                  <p>summary: {session.description}</p>
-                  <p>Presented by: {session.presenters.join(", ")}</p>
-                  <p>On {formatDate(session.date)}</p>
-                  <p>Time {session.time}</p>
-                  <p>Duration: {session.duration} minutes</p>
-                  <p>Room: {session.room}</p>
-                  <p>Users attending: {session.userCount}</p>
-                  {Auth.loggedIn() && (
-                    <Button
-                      disabled={savedSessionIds?.some(
-                        (savedSessionId) => savedSessionId === session._id
+      <div className="line"></div>
+      <div className="img">
+        <Container>
+          <h2
+            className="pt-5 major-mono-display-regular text-white"
+            style={{ fontSize: "2.3rem", fontWeight: "600" }}
+          >
+            <i className="fa-solid fa-check-double"></i>
+            Sessions:
+          </h2>
+          <Row className="con-box">
+            {sessions.map((session) => (
+              <Col key={session._id} md="4">
+                <div className="c">
+                  <Card.Body className="cardBody">
+                    <div className="card-com">
+                      <Card.Title style={{ fontWeight: "bold" }}>
+                        <h1 className="ses-name text-dark">{session.name}</h1>
+                      </Card.Title>
+                      <p>summary: {session.description}</p>
+                      <p>Presented by: {session.presenters.join(", ")}</p>
+                      <p>On {formatDate(session.date)}</p>
+                      <p>Time {session.time}</p>
+                      <p>Duration: {session.duration} minutes</p>
+                      <p>Room: {session.room}</p>
+                      <p>Users attending: {session.userCount}</p>
+                      {Auth.loggedIn() && (
+                        <Button
+                          disabled={savedSessionIds?.some(
+                            (savedSessionId) => savedSessionId === session._id
+                          )}
+                          className="btn btn-dark button "
+                          onClick={() => handleSaveSession(session._id)}
+                        >
+                          {savedSessionIds?.some(
+                            (savedSessionId) => savedSessionId === session._id
+                          ) ? (
+                            <span>
+                              This session has already been saved!{" "}
+                              <i
+                                className="fa-solid fa-check-circle"
+                                style={{
+                                  color: "green",
+                                  borderRadius: "10px",
+                                  backgroundColor: "black",
+                                  fontSize: "18px",
+                                }}
+                              ></i>
+                            </span>
+                          ) : (
+                            <span>
+                              <i className="fa-solid fa-save"></i> Save this
+                              session!
+                            </span>
+                          )}
+                        </Button>
                       )}
-                      className="btn btn-dark button"
-                      onClick={() => handleSaveSession(session._id)}
-                    >
-                      <i className="fa-solid fa-save fa-beat"></i> &nbsp;
-                      {savedSessionIds?.some(
-                        (savedSessionId) => savedSessionId === session._id
-                      )
-                        ? "This session has already been saved!"
-                        : "Save this Session!"}
-                    </Button>
-                  )}
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+                    </div>
+                  </Card.Body>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
     </>
   );
 };
