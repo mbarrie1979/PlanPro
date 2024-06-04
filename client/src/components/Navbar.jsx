@@ -17,23 +17,27 @@ const AppNavbar = () => {
         return (
           <>
             <Nav.Link as={Link} to="/mysessions">
-              <h6 className="trade-winds-regular">
+              <h6 className="rock-salt-regular text-black ">
                 <i className="fa-solid fa-database"></i> See your sessions
               </h6>
             </Nav.Link>
-            <Nav.Link>/</Nav.Link>
+            <Nav.Link className="text-black">/</Nav.Link>
             <Nav.Link
               as={Link}
               to="/addConference"
-              className="rock-salt-regular"
+              className="rock-salt-regular text-black"
             >
               <i className="fa-solid fa-database"></i> Add Conference
             </Nav.Link>
-            <Nav.Link>/</Nav.Link>
-            <Nav.Link as={Link} to="/addSession" className="rock-salt-regular">
+            <Nav.Link className="text-black">/</Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/addSession"
+              className="rock-salt-regular text-black"
+            >
               <i className="fa-solid fa-database"></i> Add Session
             </Nav.Link>
-            <Nav.Link>/</Nav.Link>
+            <Nav.Link className="text-black">/</Nav.Link>
             <Nav.Link
               onClick={Auth.logout}
               className="trade-winds-regular "
@@ -49,13 +53,19 @@ const AppNavbar = () => {
         return (
           <>
             <Nav.Link as={Link} to="/mysessions">
-              <h6 className="rock-salt-regular text-black hover">
+              <h6
+                className="rock-salt-regular text-black hover title"
+                style={{ fontWeight: "bold", fontSize: "16px" }}
+              >
                 <i className="fa-solid fa-database"></i> See your sessions
               </h6>
             </Nav.Link>
             <Nav.Link className="text-black">/</Nav.Link>
             <Nav.Link onClick={Auth.logout} style={{ fontWeight: "bold" }}>
-              <h6 className="major-mono-display-regular hover text-black">
+              <h6
+                className="major-mono-display-regular hover text-black title"
+                style={{ fontWeight: "bold", fontSize: "16px" }}
+              >
                 <i className="fa-solid fa-sign-out"></i> Logout
               </h6>
             </Nav.Link>
@@ -108,26 +118,16 @@ const AppNavbar = () => {
                 <Nav.Item>
                   <Nav.Link eventKey="login" className=" linkItem ">
                     <h3
-                      className=" shrikhand-regular
+                      className="shrikhand-regular
                         icon"
-                      style={{
-                        textShadow: "1px 2px 3px black",
-                      }}
                     >
-                      LOGIN
+                      Login
                     </h3>
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item className="linkItem">
                   <Nav.Link eventKey="signup">
-                    <h3
-                      className="shrikhand-regular icon"
-                      style={{
-                        textShadow: "1px 2px 3px black",
-                      }}
-                    >
-                      SIGNUP
-                    </h3>
+                    <h3 className="icon shrikhand-regular">Signup</h3>
                   </Nav.Link>
                 </Nav.Item>
               </Nav>

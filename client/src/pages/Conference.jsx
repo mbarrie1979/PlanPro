@@ -9,9 +9,10 @@ import {
 } from "../utils/queries";
 import { SAVE_SESSION } from "../utils/mutations";
 import { Container, Card, Row, Col, Button } from "react-bootstrap";
-import { formatDate } from "../utils/formatdate";
+import { formatDate, formatToLocalDate } from "../utils/formatdate";
 import { saveSessionIds, getSavedSessionIds } from "../utils/localStorage";
 import Auth from "../utils/auth";
+import { convertTo12HourFormat } from "../utils/timeConversion";
 import "../App.css";
 
 const Conference = () => {
@@ -202,8 +203,8 @@ const Conference = () => {
                       </Card.Title>
                       <p>summary: {session.description}</p>
                       <p>Presented by: {session.presenters.join(", ")}</p>
-                      <p>On {formatDate(session.date)}</p>
-                      <p>Time {session.time}</p>
+                      <p>On {formatToLocalDate(session.date)}</p>
+                      <p>Time {convertTo12HourFormat(session.time)}</p>
                       <p>Duration: {session.duration} minutes</p>
                       <p>Room: {session.room}</p>
                       <p>Users attending: {session.userCount}</p>

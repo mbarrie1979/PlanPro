@@ -399,6 +399,7 @@ h5 {
   position: relative;
   z-index: 1;
 }
+
 .linkItem::after {
   position: absolute;
   content: "";
@@ -406,7 +407,7 @@ h5 {
   height: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.153);
+  background-color: rgba(0, 0, 0, 0.358);
   z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
@@ -418,8 +419,10 @@ h5 {
   transform-origin: left;
 }
 .icon {
+  color: black;
   font-size: 22px;
   transition: all 0.3s ease-in-out;
+  letter-spacing: 1.5px;
 }
 .icon:hover {
   color: white;
