@@ -20,15 +20,6 @@ export const GET_ME = gql`
         room
         conferenceId
       }
-      savedBooks {
-        authors
-        description
-        bookId
-        image
-        link
-        title
-      }
-      bookCount
     }
   }
 `;

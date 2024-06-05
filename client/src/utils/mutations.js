@@ -68,44 +68,6 @@ mutation CreateSession($name: String!, $description: String!, $date: Date!, $tim
 
 
 
-export const SAVE_BOOK = gql`
-  mutation saveBook($userId: ID!, $book: BookInput!) {
-    saveBook(userId: $userId, book: $book) {
-      _id
-      username
-      email
-      savedBooks {
-        authors
-        description
-        bookId
-        image
-        link
-        title
-      }
-      bookCount
-    }
-  }
-`;
-
-export const REMOVE_BOOK = gql`
-  mutation removeBook($userId: ID!, $bookId: String!) {
-    removeBook(userId: $userId, bookId: $bookId) {
-      _id
-      username
-      email
-      savedBooks {
-        authors
-        description
-        bookId
-        image
-        link
-        title
-      }
-      bookCount
-    }
-  }
-`;
-
 export const SAVE_SESSION = gql`
   mutation saveSession($userId: ID!, $sessionId: ID!) {
     saveSession(userId: $userId, sessionId: $sessionId) {

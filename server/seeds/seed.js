@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Conference, Session, User } = require('../models');
 const seedData = require('./seedData');
 
-mongoose.connect('mongodb://localhost:27017/googlebooks', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/planprodb', { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function seedDatabase() {
   try {

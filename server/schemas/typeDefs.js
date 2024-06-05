@@ -1,14 +1,6 @@
 const typeDefs = `
   scalar Date
   scalar DateTime
-  type Book {
-    authors: [String]
-    description: String!
-    bookId: String!
-    image: String
-    link: String
-    title: String!
-  }
   type Conference {
     _id: ID!
     name: String!
@@ -35,9 +27,7 @@ const typeDefs = `
     _id: ID!
     username: String!
     email: String!
-    savedBooks: [Book]!
     savedSessions: [Session]!
-    bookCount: Int!
     isAdmin: Boolean!
     getEmailReminders: Boolean!
     getSMSReminders: Boolean!
@@ -50,7 +40,6 @@ const typeDefs = `
     me: User
     user(id: ID!): User
     users: [User]
-    bookByTitle(title: String!): Book
     conferences: [Conference]
     conference(id: ID!): Conference
     sessions: [Session]  
@@ -62,18 +51,8 @@ type Mutation {
     saveUser(username: String!, email: String!, getEmailReminders: Boolean!, getSMSReminders: Boolean!) : User
     addConference(name: String!, description: String!, startDate: Date!, endDate: Date!, location: String!, image: String!): Conference
     createSession(name: String!, description: String!, date: Date!, time: String!, presenters: [String]!, duration: Int!, room: String!, conferenceId: ID!  ): Session
-    saveBook(userId: ID!, book: BookInput!): User
     saveSession(userId: ID!, sessionId: ID!): User
     removeSession(userId: ID!, sessionId: ID!): User
-    removeBook(userId: ID!, bookId: String!): User
-  }
-  input BookInput {
-    authors: [String]
-    description: String! 
-    bookId: String!
-    image: String
-    link: String
-    title: String!
   }
   input SessionInput {
     name: String
