@@ -25,6 +25,16 @@ export const ADD_USER = gql`
     }
   }
 `;
+export const SAVE_USER = gql`
+  mutation saveUser($username: String!, $email: String!, $getEmailReminders: Boolean!, $getSMSReminders: Boolean!) {
+    saveUser(username: $username, email: $email, getEmailReminders: $getEmailReminders, getSMSReminders: $getSMSReminders) {
+      username
+      email
+      getEmailReminders
+      getSMSReminders
+    }
+  }
+`;
 
 export const ADD_CONFERENCE = gql`
   mutation addConference($name: String!, $description: String!, $startDate: Date!, $endDate: Date!,
