@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
-import { GET_CONFERENCES } from "../utils/queries";
+import { GET_CONFERENCES, GET_ME } from "../utils/queries";
 import { formatDate } from "../utils/formatdate";
 import AuthModal from "../components/AuthModal";
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 //this component is accessed currently buy the /home route
 const Home = () => {
@@ -15,6 +15,9 @@ const Home = () => {
     data,
     error: getConferencesError,
   } = useQuery(GET_CONFERENCES);
+  const { loading: loadingUser, data: userData, error: getUserError } = useQuery(GET_ME, {
+    skip: !Auth.loggedIn(), // Only run this query if the user is logged in
+  });
   // use this to determine if `useEffect()` hook needs to run again
   const conferencesDataLength = Object.keys(conferencesData).length;
 
@@ -26,7 +29,7 @@ const Home = () => {
       setConferencesData(data.conferences); // Assuming `data.conference` is the array of conferences
     }
   }, [data]);
-
+  const username = userData?.me?.username;
   if (loading) {
     return <h2>LOADING...</h2>;
   }
@@ -41,32 +44,41 @@ const Home = () => {
   }
   return (
     <>
-      <div className="text-light text-center bg-dark p-5 banner">
+     <div className="text-light text-center bg-dark p-5 banner">
         <Row>
-          <Col>
-            <Container>
-              {/* <h1 className="rock-salt-regular">View Upcoming Conferences</h1> */}
-
-              <h1 className="rock-salt-regular header">Your personalized professional conference planner</h1>
-              <h6 className="rock-salt-regular sub-head">View upcoming conferences from all over and add or remove your favorite sessions to your conference plan!</h6>
-              <Button className="rock-salt-regular header-button" onClick={() => setShowModal(true)}>
-                <div className="text-center rock-salt-regular">
-                  Get Started!
-                </div>
-              </Button>
-            </Container>
-          </Col>
-          <Col>
-            <Container>
-              <div>
-                <img
-                  src="/assets/images/op1.png"
-                  alt="people"
-                  className="banner-image"
-                />
-              </div>
-            </Container>
-          </Col>
+          {/* Conditional rendering based on login status */}
+          {!Auth.loggedIn() ? (
+            <>
+              <Col>
+                <Container>
+                  <h1 className="rock-salt-regular header">Your personalized professional conference planner</h1>
+                  <h6 className="rock-salt-regular sub-head">View upcoming conferences from all over and add or remove your favorite sessions to your conference plan!</h6>
+                  <Button className="rock-salt-regular header-button" onClick={() => setShowModal(true)}>
+                    <div className="text-center rock-salt-regular">
+                      Get Started!
+                    </div>
+                  </Button>
+                </Container>
+              </Col>
+              <Col>
+                <Container>
+                  <div>
+                    <img
+                      src="/assets/images/op1.png"
+                      alt="people"
+                      className="banner-image"
+                    />
+                  </div>
+                </Container>
+              </Col>
+            </>
+          ) : (
+            <Col>
+              <Container>
+                <h1 className="rock-salt-regular header">Welcome, {username}!</h1>
+              </Container>
+            </Col>
+          )}
         </Row>
       </div>
       <Container className="main">
