@@ -6,13 +6,6 @@ const resolvers = {
     DateTime: DateTimeResolver,
     Date: DateResolver,
     Query: {
-        // me: async (parent, args, context) => {
-        //     console.log('Context:', context); // Log the context
-        //     if (context.user) {
-        //         return User.findOne({ _id: context.user._id });
-        //     }
-        //     throw AuthenticationError;
-        // },
         me: async (parent, args, context) => {
             console.log('Context:', context); // Log the context
             if (context.user) {
@@ -82,10 +75,6 @@ const resolvers = {
                 throw new Error('User not updated');
             }
             console.log("Updated user:" + user);
-            // user.email = email;
-            // user.getEmailReminders = getEmailReminders;
-            // user.getSMSReminders = getSMSReminders;
-            //console.log("User to save: " + user);
             
             return user;
 
@@ -103,16 +92,6 @@ const resolvers = {
             });
             await session.save();
             return session;
-        },
-        saveBook: async (_, { userId, book }) => {
-            const user = await User.findById(userId);
-            if (!user) {
-                throw new Error('User not found');
-            }
-            user.savedBooks.push(book);
-            await user.save();
-            return user;
-
         },
         saveSession: async (_, { userId, sessionId }, context) => {
             const user = await User.findById(userId);
@@ -143,15 +122,6 @@ const resolvers = {
         },
 
 
-        removeBook: async (_, { userId, bookId }) => {
-            const user = await User.findById(userId);
-            if (!user) {
-                throw new Error('User not found');
-            }
-            user.savedBooks = user.savedBooks.filter(book => book.bookId !== bookId);
-            await user.save();
-            return user;
-        },
 
         removeSession: async (_, { userId, sessionId }) => {
             try {
