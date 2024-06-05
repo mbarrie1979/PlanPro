@@ -150,7 +150,7 @@ const SavedSessions = () => {
             }}
             className="major-mono-display-regular homeLink m-5"
           >
-            <i className="fa-solid fa-angle-double-left"> Go back home !</i>
+            <i className="fa-regular fa-hand-point-left"> Go back home !</i>
           </h5>
         </a>
       </span>

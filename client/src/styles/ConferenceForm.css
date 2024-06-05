@@ -1,17 +1,89 @@
 .conferenceForm {
-    width: 50%;
-    background-color: ghostwhite;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-color: #f7f7f7;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding-inline: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
-.conferenceSubmit{
-    margin-left: 10px;
-    margin-bottom: 10px;
-
+/* General Form Styles */
+form {
+  padding-inline: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
-.formTitle {
-    font-size: 20px;
-    color: gray;
-    margin-top: 10px;
+/* Form Heading */
+
+.form-title {
+  text-align: center;
+  font-size: 30px;
+  margin: 15px;
+  margin-top: 40px;
+}
+/* Form Inputs */
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Form Labels */
+form label {
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Submit Button */
+form button[type="submit"] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Date Inputs */
+form input[type="date"] {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Error Messages */
+form .error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.line2 {
+  width: 100%;
+  height: 2px;
+  margin: auto;
+  background-image: linear-gradient(45deg, white, black, black, white);
+  border-radius: 10px;
 }

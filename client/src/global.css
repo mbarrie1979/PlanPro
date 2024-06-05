@@ -13,12 +13,12 @@ h5 {
 .title {
   font-size: 2rem;
   font-weight: bold;
-  transition: all 0.3s ease-in-out;
-  animation: title 1s 1;
+  animation: title 0.5s;
   position: relative;
   color: black;
   z-index: 1;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  padding: 5px;
 }
 .title:hover {
   transform: translateY(-3px);
@@ -31,13 +31,15 @@ h5 {
   content: "";
   width: 100%;
   height: 1.5px;
+  top: 0;
   left: 0;
   bottom: 0;
   z-index: -1;
   border-radius: 10px;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.523),
+    rgba(255, 255, 255, 0.368),
+    rgb(0, 0, 0),
     rgba(255, 255, 255, 0.368)
   );
   transform: scaleX(0);
@@ -48,56 +50,39 @@ h5 {
   transform: scaleX(1);
   transform-origin: left;
 }
+.title::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1.5px;
 
-@keyframes shake {
-  0% {
-    transform: translate(1px, 1px) rotate(0deg);
-  }
-  10% {
-    transform: translate(-1px, -2px) rotate(-1deg);
-  }
-  20% {
-    transform: translate(-3px, 0px) rotate(1deg);
-  }
-  30% {
-    transform: translate(3px, 2px) rotate(0deg);
-  }
-  40% {
-    transform: translate(1px, -1px) rotate(1deg);
-  }
-  50% {
-    transform: translate(-1px, 2px) rotate(-1deg);
-  }
-  60% {
-    transform: translate(-3px, 1px) rotate(0deg);
-  }
-  70% {
-    transform: translate(3px, 1px) rotate(-1deg);
-  }
-  80% {
-    transform: translate(-1px, -1px) rotate(1deg);
-  }
-  90% {
-    transform: translate(1px, 2px) rotate(0deg);
-  }
-  100% {
-    transform: translate(1px, -2px) rotate(-1deg);
-  }
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.368),
+    rgb(0, 0, 0),
+    rgba(255, 255, 255, 0.368)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
 }
-
-.shake {
-  animation: shake 0.5s;
-  animation-iteration-count: infinite;
+.title:hover::before {
+  transform: scaleX(1);
+  transform-origin: right;
 }
 
 @keyframes title {
   0% {
     opacity: 0;
-    transform: translateX(-200px);
+    transform: translateY(-50px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 .lsLink {
@@ -121,7 +106,7 @@ h5 {
   color: white;
   background-color: transparent;
   text-shadow: 0px 0px 5px white;
-  animation: side 1s ease-in-out;
+  animation: side 0.4s ease-in-out;
 }
 .cardBody {
   transition: all 0.3s ease-in-out;
@@ -203,7 +188,7 @@ h5 {
 }
 
 .home {
-  animation: side 1s ease-in-out;
+  animation: side 0.4s ease-in-out;
 }
 .card-img {
   height: 15rem;
@@ -337,7 +322,6 @@ h5 {
 }
 
 .sub-head {
-  background-clip: text;
   color: white;
   text-shadow: 0px 0px 5px rgb(255, 255, 255);
 }
@@ -376,6 +360,23 @@ h5 {
     rgba(0, 0, 0, 0.195)
   );
   width: 95%;
+}
+.line3 {
+  height: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  margin-top: 1px;
+  background-image: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.195),
+    white,
+    rgba(0, 0, 0, 0.195)
+  );
+  width: 50%;
 }
 
 .homeLink {
@@ -421,6 +422,8 @@ h5 {
 .icon {
   color: black;
   font-size: 22px;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   transition: all 0.3s ease-in-out;
   letter-spacing: 1.5px;
 }
@@ -433,4 +436,43 @@ h5 {
 }
 .hover:hover {
   transform: translateY(-3px);
+}
+
+/* session form styles */
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .rock-salt-regular {
+    font-size: 30px;
+  }
+}
+
+.home-title {
+  font-size: 3.3rem;
+  background-image: linear-gradient(
+    to bottom,
+    cyan,
+    cyan -10%,
+    white,
+    white,
+    white,
+    white,
+    cyan,
+    cyan 110%
+  );
+  background-clip: text;
+  color: transparent;
+  transition: all 0.4s ease-in-out;
+}
+
+.home-title::first-letter {
+  background-image: linear-gradient(to top, white, white, rgb(0, 195, 255));
+  color: transparent;
+  background-clip: text;
 }

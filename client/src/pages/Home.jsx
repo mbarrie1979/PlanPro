@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { GET_CONFERENCES, GET_ME } from "../utils/queries";
 import { formatDate } from "../utils/formatdate";
 import AuthModal from "../components/AuthModal";
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
 //this component is accessed currently buy the /home route
 const Home = () => {
@@ -15,7 +15,11 @@ const Home = () => {
     data,
     error: getConferencesError,
   } = useQuery(GET_CONFERENCES);
-  const { loading: loadingUser, data: userData, error: getUserError } = useQuery(GET_ME, {
+  const {
+    loading: loadingUser,
+    data: userData,
+    error: getUserError,
+  } = useQuery(GET_ME, {
     skip: !Auth.loggedIn(), // Only run this query if the user is logged in
   });
   // use this to determine if `useEffect()` hook needs to run again
@@ -44,16 +48,24 @@ const Home = () => {
   }
   return (
     <>
-     <div className="text-light text-center bg-dark p-5 banner">
+      <div className="text-light text-center bg-dark p-5 banner">
         <Row>
           {/* Conditional rendering based on login status */}
           {!Auth.loggedIn() ? (
             <>
               <Col>
                 <Container>
-                  <h1 className="rock-salt-regular header">Your personalized professional conference planner</h1>
-                  <h6 className="rock-salt-regular sub-head">View upcoming conferences from all over and add or remove your favorite sessions to your conference plan!</h6>
-                  <Button className="rock-salt-regular header-button" onClick={() => setShowModal(true)}>
+                  <h1 className="rock-salt-regular home-title home">
+                    Your personalized professional conference planner
+                  </h1>
+                  <h6 className="rock-salt-regular home sub-head">
+                    View upcoming conferences from all over and add or remove
+                    your favorite sessions to your conference plan!
+                  </h6>
+                  <Button
+                    className="rock-salt-regular header-button"
+                    onClick={() => setShowModal(true)}
+                  >
                     <div className="text-center rock-salt-regular">
                       Get Started!
                     </div>
@@ -75,7 +87,9 @@ const Home = () => {
           ) : (
             <Col>
               <Container>
-                <h1 className="rock-salt-regular header">Welcome, {username}!</h1>
+                <h1 className="rock-salt-regular header">
+                  Welcome, {username}!
+                </h1>
               </Container>
             </Col>
           )}
@@ -84,8 +98,9 @@ const Home = () => {
       <Container className="main">
         <h2 className="home pt-4 major-mono-display-regular text-light">
           {conferencesData.length
-            ? `Viewing ${conferencesData.length} upcoming ${conferencesData.length === 1 ? "conference" : "conferences"
-            }:`
+            ? `Viewing ${conferencesData.length} upcoming ${
+                conferencesData.length === 1 ? "conference" : "conferences"
+              }:`
             : "There are no conferences!"}
         </h2>
 
@@ -97,8 +112,13 @@ const Home = () => {
               <Col key={conference._id} md="4">
                 <Link
                   to={`/conference/${conference._id}`}
-
-                  style={{ textDecoration: "none", backgroundImage: `url(${conference.image})`, backgroundSize: "cover" }} className="link-tag">
+                  style={{
+                    textDecoration: "none",
+                    backgroundImage: `url(${conference.image})`,
+                    backgroundSize: "cover",
+                  }}
+                  className="link-tag"
+                >
                   {/* <Card border='dark' className="text-white">  Nardge*/}
                   <Card border="dark" className="card-img text-white">
                     <div className="front">
@@ -129,7 +149,10 @@ const Home = () => {
           })}
         </Row>
       </Container>
-      <AuthModal showModal={showModal} handleClose={() => setShowModal(false)} />
+      <AuthModal
+        showModal={showModal}
+        handleClose={() => setShowModal(false)}
+      />
     </>
   );
 };

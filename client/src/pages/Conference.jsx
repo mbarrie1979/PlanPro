@@ -145,7 +145,7 @@ const Conference = () => {
                 }}
                 className="major-mono-display-regular homeLink mt-4"
               >
-                <i className="fa-solid fa-angle-double-left"> Go back home !</i>
+                <i className="fa-solid fa-hand-point-left"> Go back home !</i>
               </h5>
             </a>
           </span>
