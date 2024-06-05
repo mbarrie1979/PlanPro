@@ -34,7 +34,7 @@ const SessionForm = () => {
     console.log("In use effect");
     if (data){
      console.log("Conf data: ") + JSON.stringify(data);
-    console.log(data);
+     console.log(data);
      //setConferenceNames(conferenceData.map(conference => conference.name));
      setConferenceData(data);
     }
@@ -112,8 +112,9 @@ return (
           as = 'select'
           name='conferenceId'
           onChange={handleInputChange}
+          defaultValue='Select a Conference'
         >
-          <option disabled selected  value="">Select a Conference</option>
+          <option disabled value="Select a Conference">Select a Conference</option>
         { data.conferences.map((conference) => (
             <option key={conference._id} value={conference._id}>{conference.name}</option>
           ))} 

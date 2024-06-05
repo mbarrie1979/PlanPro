@@ -68,7 +68,7 @@ module.exports = {
       description: "Learn how to secure your web applications.",
       presenters: ["James White", "Laura Black"],
       date: new Date("2024-10-02"),
-      time: '02:00',
+      time: '14:00',
       duration: 90,
       room: "202",
       users: [],
@@ -136,7 +136,7 @@ module.exports = {
       description: "Approaches and tools for testing JavaScript applications.",
       presenters: ["Tom Pink", "Ella Maroon"],
       date: new Date("2024-11-16"),
-      time: '02:00',
+      time: '14:00',
       duration: 90,
       room: "502",
       users: [],
@@ -204,7 +204,7 @@ module.exports = {
       description: "A comparison of popular JavaScript frameworks.",
       presenters: ["Olivia Red", "Lucas Cyan"],
       date: new Date("2024-12-06"),
-      time: '02:00',
+      time: '14:00',
       duration: 90,
       room: "802",
       users: [],
@@ -241,6 +241,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "bob_s",
@@ -249,6 +251,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: true,
+      getSMSReminders: true,
     },
     {
       username: "carol_w",
@@ -257,6 +261,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "david_b",
@@ -265,6 +271,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "eve_d",
@@ -273,6 +281,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "frank_m",
@@ -281,6 +291,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "grace_w",
@@ -289,6 +301,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "hank_m",
@@ -297,6 +311,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "ivy_t",
@@ -305,6 +321,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "jack_a",
@@ -313,6 +331,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "kimberly_t",
@@ -321,6 +341,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "liam_h",
@@ -329,6 +351,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "mia_c",
@@ -337,6 +361,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "noah_l",
@@ -345,6 +371,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "olivia_l",
@@ -353,6 +381,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "peter_w",
@@ -361,6 +391,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "quinn_h",
@@ -369,6 +401,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "rachel_a",
@@ -377,6 +411,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "steve_y",
@@ -385,6 +421,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "tina_k",
@@ -393,6 +431,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: false,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
     {
       username: "admin",
@@ -401,6 +441,8 @@ module.exports = {
       password: "securepassword123",
       savedSessions: [],
       isAdmin: true,
+      getEmailReminders: false,
+      getSMSReminders: false,
     },
   ],
 };

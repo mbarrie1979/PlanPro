@@ -1,9 +1,13 @@
 const nodemailer = require('nodemailer')
 const sgMail = require('@sendgrid/mail')
+// Enable access to .env variables
+require('dotenv').config();
 
 //Twilio Send Grid email sender
 // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
+
+let API_KEY = process.env.MAIL_API_KEY;
 
 
 const sendDefaultSendGridMessage = () =>{
@@ -19,9 +23,7 @@ const sendDefaultSendGridMessage = () =>{
 }
 
 const sendSendGridMessage = (msg) =>{
-    // TODO: Need to set API Key up as environment variable
-    //sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-    sgMail.setApiKey('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');
+    sgMail.setApiKey(API_KEY);
     sgMail
     .send(msg)
     .then(() => {
