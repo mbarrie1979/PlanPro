@@ -20,8 +20,12 @@ const resolvers = {
             }
             throw new AuthenticationError('You must be logged in');
         },
-        user: async (_, { _id }) => {
-            return await User.findById(_id);
+        user: async (_, { id }) => {
+            console.log("id: " + id);
+            return await User.findById(id);
+        },
+        users: async () => {
+            return await User.find();
         },
         conferences: async (parent, args, context) => {
 
@@ -60,10 +64,31 @@ const resolvers = {
         },
         addUser: async (_, { username, email, password }) => {
             const user = new User({ username, email, password });
-            user.isAdmin = false
+            user.isAdmin = false;
+            user.getSMSReminders = false;
+            user.getEmailReminders = false;
             await user.save();
             const token = signToken(user);
             return { token, user };
+        },
+        saveUser: async (_, { username, email, getEmailReminders, getSMSReminders }) => {
+            const filter = { username: username};
+            const update = {
+                getEmailReminders: getEmailReminders,
+                getSMSReminders: getSMSReminders
+            }
+            const user = await User.findOneAndUpdate(filter,update);
+            if (!user) {
+                throw new Error('User not updated');
+            }
+            console.log("Updated user:" + user);
+            // user.email = email;
+            // user.getEmailReminders = getEmailReminders;
+            // user.getSMSReminders = getSMSReminders;
+            //console.log("User to save: " + user);
+            
+            return user;
+
         },
         addConference: async (_, { name, description, startDate, endDate, location, image }) => {
             const conference = new Conference({ name, description, startDate, endDate, location, image });

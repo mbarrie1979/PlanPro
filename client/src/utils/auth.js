@@ -28,6 +28,16 @@ class AuthService {
     }
     return false;
   }
+  
+  getLoggedInUserId(){
+    const token = this.getToken();
+    if (token){
+      const decoded = decode(token);
+      console.log("Decoded token: " + JSON.stringify(decoded));
+      return decoded.data._id
+    }
+    return 'NOT LOGGED IN';
+  }
 
   // check if token is expired
   isTokenExpired(token) {

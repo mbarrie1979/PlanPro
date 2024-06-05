@@ -39,6 +39,8 @@ const typeDefs = `
     savedSessions: [Session]!
     bookCount: Int!
     isAdmin: Boolean!
+    getEmailReminders: Boolean!
+    getSMSReminders: Boolean!
   }
   type Auth {
     token: ID!
@@ -46,7 +48,8 @@ const typeDefs = `
   }
  type Query {
     me: User
-    user(_id: ID!): User
+    user(id: ID!): User
+    users: [User]
     bookByTitle(title: String!): Book
     conferences: [Conference]
     conference(id: ID!): Conference
@@ -56,6 +59,7 @@ const typeDefs = `
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    saveUser(username: String!, email: String!, getEmailReminders: Boolean!, getSMSReminders: Boolean!) : User
     addConference(name: String!, description: String!, startDate: Date!, endDate: Date!, location: String!, image: String!): Conference
     createSession(name: String!, description: String!, date: Date!, time: String!, presenters: [String]!, duration: Int!, room: String!, conferenceId: ID!  ): Session
     saveBook(userId: ID!, book: BookInput!): User

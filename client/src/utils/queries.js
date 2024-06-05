@@ -7,6 +7,8 @@ export const GET_ME = gql`
       username
       email
       isAdmin
+      getEmailReminders
+      getSMSReminders
       savedSessions {
         _id
         name
@@ -57,6 +59,19 @@ export const GET_CONFERENCE = gql`
       image
     }
   }
+`;
+
+export const GET_USER = gql`
+query user($id: ID!) {
+  user(id: $id) {
+    username
+    isAdmin
+    getSMSReminders
+    getEmailReminders
+    email
+    _id
+  }
+}
 `;
 
 

@@ -10,6 +10,7 @@ import Home from './pages/Home.jsx'
 import Conference from './pages/Conference.jsx'
 import ConferenceForm from './components/ConferenceForm.jsx'
 import SessionForm from './components/SessionForm.jsx'
+import ProfileForm from './components/ProfileForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/addSession',
         element: <SessionForm />,  
+      },
+      {
+        path: '/profile',
+        element: <ProfileForm />,  
       }
     ]
   }

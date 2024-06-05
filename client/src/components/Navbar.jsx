@@ -62,6 +62,15 @@ const AppNavbar = () => {
               </h6>
             </Nav.Link>
             <Nav.Link className="text-black">/</Nav.Link>
+            <Nav.Link as={Link} to="/profile">
+              <h6
+                className="rock-salt-regular text-black hover title"
+                style={{ fontWeight: "bold", fontSize: "16px" }}
+              >
+                <i className="fa-solid fa-database"></i> Profile
+              </h6>
+            </Nav.Link>
+            <Nav.Link className="text-black">/</Nav.Link>
             <Nav.Link onClick={Auth.logout} style={{ fontWeight: "bold" }}>
               <h6
                 className="major-mono-display-regular hover text-black title"
