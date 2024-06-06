@@ -8,7 +8,10 @@ import Auth from "../utils/auth";
 
 const ProfileForm = () => {
   // set initial form state
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({
+    username: '',
+    email: '',
+  });
   // set state for form validation
   const [validated, setValidated] = useState(false);
   // set state for alert
