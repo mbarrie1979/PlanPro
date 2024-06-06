@@ -174,7 +174,6 @@ const ConferenceForm = () => {
             </Form.Control.Feedback>
           </Form.Group>
           <Button
-            className="conferenceSubmit"
             disabled={
               !(
                 conferenceFormData.name &&

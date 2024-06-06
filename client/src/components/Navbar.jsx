@@ -76,10 +76,10 @@ const AppNavbar = () => {
             <Nav.Link className="text-black">/</Nav.Link>
             <Nav.Link as={Link} to="/profile">
               <h6
-                className="rock-salt-regular text-black hover title"
+                className="rock-salt-regular text-black hover"
                 style={{ fontWeight: "bold", fontSize: "16px" }}
               >
-                <i className="fa-solid fa-database"></i> Profile
+                <i className="fa-regular fa-id-card"></i> Profile
               </h6>
             </Nav.Link>
             <Nav.Link className="text-black">/</Nav.Link>

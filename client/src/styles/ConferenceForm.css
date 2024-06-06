@@ -13,7 +13,7 @@
 
 /* General Form Styles */
 form {
-  padding-inline: 20px;
+  padding-inline: 70px;
   border-radius: 10px;
   margin-top: 10px;
 }
@@ -23,7 +23,6 @@ form {
 .form-title {
   text-align: center;
   font-size: 30px;
-  margin: 15px;
   margin-top: 40px;
 }
 /* Form Inputs */
@@ -46,11 +45,10 @@ form label {
 }
 
 /* Submit Button */
-form button[type="submit"] {
-  width: 100%;
+.form button[type="submit"] {
   background-color: #4caf50;
   color: white;
-  padding: 14px 20px;
+  width: 20%;
   margin: 8px 0;
   border: none;
   border-radius: 4px;

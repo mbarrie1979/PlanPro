@@ -7,6 +7,11 @@
   background-color: rgb(0, 0, 0);
   color: rgb(1, 242, 255);
 }
+#body {
+  margin: 0;
+  min-height: auto;
+  padding: 0;
+}
 h5 {
   text-decoration: none;
 }
@@ -118,9 +123,8 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(0, 0, 0);
   color: white;
-  line-height: 100px;
+  line-height: 5rem;
 }
 .link {
   transition: all 0.3s ease-in-out;
@@ -475,4 +479,10 @@ h5 {
   background-image: linear-gradient(to top, white, white, rgb(0, 195, 255));
   color: transparent;
   background-clip: text;
+}
+
+@media only screen and (max-width: 900px) {
+  .rock-salt-regular {
+    font-size: 1.2rem;
+  }
 }
