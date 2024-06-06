@@ -1,17 +1,83 @@
-.profileForm {
-    width: 50%;
-    background-color: ghostwhite;
-    padding: 10px;
+/* Profile Form Container */
+.profile-form {
+  background-color: rgba(255, 255, 255, 0.689);
+  padding: 20px;
+  width: 40rem;
+  margin: 20px auto;
+  height: auto;
+  border-radius: 10px;
+}
+.profile-form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.profileSubmit{
-    margin-left: 10px;
-    margin-bottom: 10px;
-
+/* Form Title */
+.profile-form-container h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #000000;
 }
 
-.formTitle {
-    font-size: 20px;
-    color: gray;
-    margin-top: 10px;
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Form Label */
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Form Input */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+/* Form Checkbox/Radio */
+.form-group input[type="checkbox"],
+.form-group input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Form Submit Button */
+.profile-form-container button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-form-container button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.line2 {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.179),
+    black,
+    rgba(255, 255, 255, 0.179)
+  );
+  margin-bottom: 20px;
+  margin-top: 20px;
 }

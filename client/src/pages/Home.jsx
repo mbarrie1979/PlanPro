@@ -66,7 +66,10 @@ const Home = () => {
                     className="rock-salt-regular header-button"
                     onClick={() => setShowModal(true)}
                   >
-                    <div className="text-center rock-salt-regular">
+                    <div
+                      className="text-center rock-salt-regular"
+                      style={{ fontSize: "18px" }}
+                    >
                       Get Started!
                     </div>
                   </Button>
@@ -87,7 +90,10 @@ const Home = () => {
           ) : (
             <Col>
               <Container>
-                <h1 className="rock-salt-regular header">
+                <h1
+                  className="rock-salt-regular"
+                  style={{ fontSize: "3rem", textAlign: "left" }}
+                >
                   Welcome, {username}!
                 </h1>
               </Container>
