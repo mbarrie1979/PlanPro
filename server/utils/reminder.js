@@ -27,7 +27,7 @@ const { User, Session, Conference } = require('../models');
 
                 // if running on hosted render server which in UTC,  add 4 hours to EST time
                 if (process.env.MONGODB_URI){
-                    sessionDate = new Date(sessionDate.getTime() + 4*60*1000);
+                    sessionDate = new Date(sessionDate.getTime() + 4*60*60*1000);
                     console.log("Running on hosted server, session date is: " + sessionDate);
                 }
                 else{
