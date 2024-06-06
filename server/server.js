@@ -51,5 +51,5 @@ const startApolloServer = async () => {
 startApolloServer();
 
 // Schedule email reminder check to run every minute
-//setInterval(sendReminder, 60000);
+setInterval(sendReminder, 60000);
 //sendDefaultSendGridMessage();
