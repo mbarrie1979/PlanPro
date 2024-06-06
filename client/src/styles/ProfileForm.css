@@ -81,3 +81,16 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+.foot {
+  display: flex;
+  justify-content: end;
+}
+
+#foot {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: black;
+  align-self: flex-end;
+  margin-top: 12rem;
+}
