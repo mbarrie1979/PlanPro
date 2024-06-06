@@ -124,12 +124,7 @@ const Conference = () => {
         className=" img2 conference-container text-light bg-black bg-opacity-75 d-flex justify-content-center"
         style={styles}
       >
-        <Container
-        // className="conference-container"
-        // style={{
-        //   backgroundImage: `url(${conference.image})`,
-        // }}
-        >
+        <Container>
           <span>
             <a
               href="/"
@@ -201,7 +196,7 @@ const Conference = () => {
                       <Card.Title style={{ fontWeight: "bold" }}>
                         <h1 className="ses-name text-dark">{session.name}</h1>
                       </Card.Title>
-                      <p>summary: {session.description}</p>
+                      <p>{session.description}</p>
                       <p>Presented by: {session.presenters.join(", ")}</p>
                       <p>On {formatToLocalDate(session.date)}</p>
                       <p>Time {convertTo12HourFormat(session.time)}</p>
