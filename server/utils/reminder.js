@@ -24,6 +24,15 @@ const { User, Session, Conference } = require('../models');
                 hourMinute = session.time.split(":");
                 sessionDate.setHours(hourMinute[0]);
                 sessionDate.setMinutes(hourMinute[1]);
+
+                // if running on hosted render server which in UTC,  add 4 hours to EST time
+                if (process.env.MONDGODB_URI){
+                    sessionDate = new Date(sessionDate.getTime() + 4*60*1000);
+                    console.log("Running on hosted server, session date is: " + sessionDate);
+                }
+                else{
+                    console.log("Running locally, session date is: " + sessionDate);
+                }
                 //console.log("Session date after: " + sessionDate);
                 let currentDate = new Date();
                 //console.log("Current Date: " + currentDate);
