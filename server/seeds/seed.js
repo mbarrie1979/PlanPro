@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const { Conference, Session, User } = require('../models');
 const seedData = require('./seedData');
+// const localMongo = "'mongodb://localhost:27017/planprodb', { useNewUrlParser: true, useUnifiedTopology: true }"
+const localMongo = "mongodb://localhost:27017/planprodb"
+const mongodbUri = process.env.MONGODB_URI || localMongo;
+mongoose.connect(mongodbUri);
 
-mongoose.connect('mongodb://localhost:27017/planprodb', { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function seedDatabase() {
   try {
