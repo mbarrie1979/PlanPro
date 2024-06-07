@@ -14,7 +14,7 @@ const Home = () => {
     loading,
     data,
     error: getConferencesError,
-  } = useQuery(GET_CONFERENCES);
+  } = useQuery(GET_CONFERENCES,{fetchPolicy: "no-cache",});
   const {
     loading: loadingUser,
     data: userData,
