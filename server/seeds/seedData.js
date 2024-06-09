@@ -76,7 +76,7 @@ module.exports = {
     },
     {
       name: "Progressive Web Apps",
-      description: "Building performant and reliable Progressive Web Apps.",
+      description: "Building performant Progressive Web Apps.",
       presenters: ["David Brown", "Lisa Green"],
       date: new Date("2024-10-03"),
       time: '09:00',
@@ -133,7 +133,7 @@ module.exports = {
     },
     {
       name: "Testing JavaScript Applications",
-      description: "Approaches and tools for testing JavaScript applications.",
+      description: "Approaches for testing JS applications.",
       presenters: ["Tom Pink", "Ella Maroon"],
       date: new Date("2024-11-16"),
       time: '14:00',
@@ -155,7 +155,7 @@ module.exports = {
     },
     {
       name: "Serverless Functions with AWS Lambda",
-      description: "Introduction to serverless functions using AWS Lambda.",
+      description: "Guide to serverless functions using AWS.",
       presenters: ["Zoe Indigo", "Aaron Navy"],
       date: new Date("2024-11-17"),
       time: '11:00',
@@ -168,7 +168,7 @@ module.exports = {
     {
       name: "Mastering Webpack",
       description:
-        "Advanced techniques for optimizing your build with Webpack.",
+        "Advanced techniques for optimizing with Webpack.",
       presenters: ["Liam Brown", "Sophia White"],
       date: new Date("2024-12-05"),
       time: '09:00',
@@ -190,7 +190,7 @@ module.exports = {
     },
     {
       name: "Accessibility in Web Design",
-      description: "Ensuring your web designs are accessible to everyone.",
+      description: "Ensuring your web designs are accessible.",
       presenters: ["Noah Grey", "Emma Blue"],
       date: new Date("2024-12-06"),
       time: '10:00',
@@ -201,7 +201,7 @@ module.exports = {
     },
     {
       name: "JavaScript Frameworks Comparison",
-      description: "A comparison of popular JavaScript frameworks.",
+      description: "A comparison of JavaScript frameworks.",
       presenters: ["Olivia Red", "Lucas Cyan"],
       date: new Date("2024-12-06"),
       time: '14:00',
@@ -212,7 +212,7 @@ module.exports = {
     },
     {
       name: "Animations with CSS and JavaScript",
-      description: "Creating animations using CSS and JavaScript.",
+      description: "Creating animations using CSS and JS.",
       presenters: ["Mia Yellow", "Ethan Pink"],
       date: new Date("2024-12-07"),
       time: '09:00',
