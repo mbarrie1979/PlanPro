@@ -196,7 +196,7 @@ const Conference = () => {
                       <Card.Title style={{ fontWeight: "bold" }}>
                         <h1 className="ses-name text-dark">{session.name}</h1>
                       </Card.Title>
-                      <p>{session.description}</p>
+                      <p className="ses-description">{session.description}</p>
                       <p>Presented by: {session.presenters.join(", ")}</p>
                       <p>On {formatToLocalDate(session.date)}</p>
                       <p>Time {convertTo12HourFormat(session.time)}</p>

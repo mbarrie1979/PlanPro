@@ -271,6 +271,12 @@ h5 {
   white-space: nowrap;
 }
 
+.ses-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .card-com {
   padding: 20px;
   background-color: rgb(255, 255, 255);
