@@ -68,7 +68,7 @@ const Home = () => {
                   >
                     <div
                       className="text-center rock-salt-regular"
-                      style={{ fontSize: "18px" }}
+                      style={{ fontSize: "14px" }}
                     >
                       Get Started!
                     </div>
